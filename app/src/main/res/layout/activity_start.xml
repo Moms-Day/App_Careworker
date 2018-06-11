@@ -6,5 +6,70 @@
     android:layout_height="match_parent"
     tools:context=".StartActivity">
 
+    <ImageView
+        android:id="@+id/start_imgView_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/start_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
+        android:text="엄마를 부탁해"
+        android:textColor="#606060"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_imgView_icon" />
+
+    <TextView
+        android:id="@+id/start_tv_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="i love you mom"
+        android:textColor="#606060"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/start_tv_title"
+        app:layout_constraintStart_toStartOf="@+id/start_tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/start_tv_title" />
+
+    <Button
+        android:id="@+id/start_btn_login"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="132dp"
+        android:background="@drawable/all_back_round_filled"
+        android:text="로그인"
+        android:textColor="#FFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_tv_subtitle" />
+
+    <Button
+        android:id="@+id/start_btn_signUp"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/all_back_round_non_filled"
+        android:text="회원가입"
+        android:textColor="#95C1FF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start_btn_login" />
+
 
 </android.support.constraint.ConstraintLayout>

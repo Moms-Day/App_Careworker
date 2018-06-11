@@ -24,11 +24,10 @@ public class StartActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         loginBtn.setOnClickListener(v -> {
-//            TODO 로그인 액티비티로 넘어가는 기능 추가
-//            startActivity(new Intent(this,));
+            startActivity(new Intent(this, LoginActivity.class));
         });
 
-        signUpBtn.setOnClickListener((v) ->{
+        signUpBtn.setOnClickListener((v) -> {
 //            TODO 회원가입 액티비티로 넘어가는 기능 추가
         });
     }

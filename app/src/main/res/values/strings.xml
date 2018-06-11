@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">App_CareWorker</string>
+    <string name="forget_id_pw"><u>아이디/비밀번호를 잊으셨나요?</u></string>
 </resources>

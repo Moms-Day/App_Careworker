@@ -3,6 +3,7 @@ package momsday.careworker;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
 import momsday.careworker.databinding.ActivityStartBinding;
@@ -22,8 +23,11 @@ public class StartActivity extends AppCompatActivity {
 
         binding.startBtnSignUp.setOnClickListener((v) -> {
 //                        TODO 회원가입 액티비티로 넘어가는 기능 추가
+            startActivity(new Intent(this, SignUpActivity.class));
         });
     }
+
+    static int sibal = 0;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -1,11 +1,11 @@
-package momsday.careworker;
+package momsday.careworker.Activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
+import momsday.careworker.R;
 import momsday.careworker.databinding.ActivityStartBinding;
 
 public class StartActivity extends AppCompatActivity {
@@ -26,8 +26,6 @@ public class StartActivity extends AppCompatActivity {
             startActivity(new Intent(this, SignUpActivity.class));
         });
     }
-
-    static int sibal = 0;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

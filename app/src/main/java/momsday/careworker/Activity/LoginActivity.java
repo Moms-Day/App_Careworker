@@ -18,7 +18,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         binding.loginBtnSubmit.setOnClickListener((v) -> {
-
+            Intent intent = new Intent();
+            setResult(RESULT_OK, intent);
+            finish();
         });
     }
 

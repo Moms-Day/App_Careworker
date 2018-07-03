@@ -1,4 +1,4 @@
-package momsday.careworker.Activity;
+package momsday.careworker.Login;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;

@@ -1,4 +1,4 @@
-package momsday.careworker.Activity;
+package momsday.careworker.SignUp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

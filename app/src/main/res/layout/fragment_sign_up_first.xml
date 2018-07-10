@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUp.SignUpFirstFragment">
+
+    <TextView
+        android:id="@+id/tv_signUp1_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="아이디"
+        android:textColor="#4D4D4D"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/et_signUp1_id"
+        app:layout_constraintStart_toStartOf="@+id/guideline_signUp1_left"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <EditText
+        android:id="@+id/et_signUp1_id"
+        style="@style/BaseEditTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawablePadding="6dp"
+        android:drawableStart="@drawable/ic_person"
+        android:hint="아이디를 입력해 주세요."
+        app:layout_constraintBottom_toTopOf="@+id/tv_signUp_pw"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_signUp2_right"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline_signUp1_left"
+        app:layout_constraintTop_toBottomOf="@+id/tv_signUp1_id" />
+
+    <TextView
+        android:id="@+id/tv_signUp_pw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="비밀번호"
+        app:layout_constraintBottom_toTopOf="@+id/et_signUp1_pw"
+        app:layout_constraintStart_toStartOf="@+id/guideline_signUp1_left"
+        app:layout_constraintTop_toBottomOf="@+id/et_signUp1_id" />
+
+    <EditText
+        android:id="@+id/et_signUp1_pw"
+        style="@style/BaseEditTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawableLeft="@drawable/ic_lock"
+        android:hint="비밀번호를 입력해주세요."
+        app:layout_constraintBottom_toTopOf="@+id/tv_signUp1_confirm"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_signUp2_right"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline_signUp1_left"
+        app:layout_constraintTop_toBottomOf="@+id/tv_signUp_pw" />
+
+    <TextView
+        android:id="@+id/tv_signUp1_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="비밀번호"
+        app:layout_constraintBottom_toTopOf="@+id/et_signUp1_confirm"
+        app:layout_constraintStart_toStartOf="@+id/guideline_signUp1_left"
+        app:layout_constraintTop_toBottomOf="@+id/et_signUp1_pw" />
+
+    <EditText
+        android:id="@+id/et_signUp1_confirm"
+        style="@style/BaseEditTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:drawableLeft="@drawable/ic_lock"
+        android:hint="비밀번호를 입력해주세요."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_signUp2_right"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline_signUp1_left"
+        app:layout_constraintTop_toBottomOf="@+id/tv_signUp1_confirm" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_signUp1_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="64dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_signUp2_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="64dp" />
+
+</android.support.constraint.ConstraintLayout>

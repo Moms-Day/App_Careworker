@@ -7,12 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 
-import momsday.careworker.Fragment.ChattingFragment;
-import momsday.careworker.Fragment.PatientListFragment;
-import momsday.careworker.Fragment.WriteFormFragment;
 import momsday.careworker.R;
 import momsday.careworker.databinding.ActivityMainBinding;
 
@@ -20,6 +16,10 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding r;
     private SectionsPagerAdapter sectionsPagerAdapter;
+
+    PatientListFragment patientListFragment;
+    ChattingFragment chattingFragment;
+    WriteFormFragment writeFormFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void init() {
+        patientListFragment = new PatientListFragment();
+        chattingFragment = new ChattingFragment();
+        writeFormFragment = new WriteFormFragment();
+
         sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         r.mainViewPager.setAdapter(sectionsPagerAdapter);
@@ -39,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
         r.mainViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(r.tabLayoutMain));
         r.tabLayoutMain.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(r.mainViewPager));
+
+
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -51,11 +57,14 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new PatientListFragment();
+                    return patientListFragment;
+//                    return new PatientListFragment();
                 case 1:
-                    return new ChattingFragment();
+                    return chattingFragment;
+//                    return new ChattingFragment();
                 case 2:
-                    return new WriteFormFragment();
+                    return writeFormFragment;
+//                    return new WriteFormFragment();
                 default:
                     return null;
             }

@@ -9,7 +9,7 @@
         tools:context=".SignUp.SignUpActivity">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_signUp"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary">
@@ -22,98 +22,35 @@
             android:text="회원가입"
             android:textColor="#FFF"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbar_signUp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/toolbar"
-            app:layout_constraintTop_toTopOf="@+id/toolbar" />
+            app:layout_constraintStart_toStartOf="@+id/toolbar_signUp"
+            app:layout_constraintTop_toTopOf="@+id/toolbar_signUp" />
 
-        <TextView
-            android:id="@+id/signUp_et_id"
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager_signUp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/button_signUp_next"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_signUp" />
+
+        <momsday.careworker.Util.CircleAnimIndicator
+            android:id="@+id/indicator_signUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="아이디"
-            android:textColor="#4D4D4D"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-        <EditText
-            android:id="@+id/login_et_id"
-            style="@style/BaseEditTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:drawablePadding="6dp"
-            android:drawableStart="@drawable/ic_person"
-            android:hint="아이디를 입력해 주세요."
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/signUp_et_id" />
-
-        <TextView
-            android:id="@+id/signUp_tv_pw"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="비밀번호"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/login_et_id" />
-
-        <EditText
-            android:id="@+id/signUp_et_pw"
-            style="@style/BaseEditTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:drawableLeft="@drawable/ic_lock"
-            android:hint="비밀번호를 입력해주세요."
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/signUp_tv_pw" />
-
-        <TextView
-            android:id="@+id/signUp_tv_confirm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="비밀번호"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/signUp_et_pw" />
-
-        <EditText
-            android:id="@+id/signUp_et_confirm"
-            style="@style/BaseEditTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:drawableLeft="@drawable/ic_lock"
-            android:hint="비밀번호를 입력해주세요."
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/signUp_tv_confirm" />
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/button_signUp_next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
+            android:id="@+id/button_signUp_next"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@color/colorPrimary"
             android:text="다음"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="64dp" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_end="64dp" />
     </android.support.constraint.ConstraintLayout>
 
 </layout>

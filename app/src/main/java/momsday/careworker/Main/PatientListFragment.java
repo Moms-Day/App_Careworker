@@ -1,6 +1,7 @@
-package momsday.careworker.Fragment;
+package momsday.careworker.Main;
 
-
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,23 +11,18 @@ import android.view.ViewGroup;
 
 import momsday.careworker.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class WriteFormFragment extends Fragment {
 
+public class PatientListFragment extends Fragment {
 
-    public WriteFormFragment() {
+    public PatientListFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     @Nullable
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_write_form, container, false);
+        return inflater.inflate(R.layout.fragment_patient_list, container, false);
     }
-
 }

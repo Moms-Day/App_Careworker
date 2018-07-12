@@ -1,17 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".Main.PatientListFragment">
+        android:layout_height="match_parent">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Patient Fragment" />
+            tools:context=".ui.Main.PatientListFragment">
 
-    </android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_patientList_request"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="sans-serif"
+                android:text="연결요청 ( 2 )"
+                android:textColor="#4d4d4d"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/guideline_patientList_left"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_patientList_request"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline_patientList_left"
+                app:layout_constraintTop_toBottomOf="@+id/tv_patientList_request" />
+
+            <TextView
+                android:id="@+id/tv_patientList_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="sans-serif"
+                android:text="노부모 목록 ( 3 )"
+                android:textColor="#4d4d4d"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/guideline_patientList_left"
+                app:layout_constraintTop_toBottomOf="@+id/rv_patientList_request" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_patientList_parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/guideline_patientList_left"
+                app:layout_constraintTop_toBottomOf="@+id/tv_patientList_parent" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_patientList_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="32dp" />
+
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 </layout>

@@ -19,11 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Start.StartActivity" />
-        <activity android:name=".Login.LoginActivity" />
-        <activity android:name=".SignUp.SignUpActivity" />
+        <activity android:name=".ui.Start.StartActivity" />
+        <activity android:name=".ui.Login.LoginActivity" />
+        <activity android:name=".ui.SignUp.SignUpActivity" />
         <activity
-            android:name=".Main.MainActivity"
+            android:name=".ui.Main.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme" />
     </application>

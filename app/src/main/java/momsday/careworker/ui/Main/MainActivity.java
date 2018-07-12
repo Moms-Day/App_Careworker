@@ -1,4 +1,4 @@
-package momsday.careworker.Main;
+package momsday.careworker.ui.Main;
 
 import android.databinding.DataBindingUtil;
 import android.support.design.widget.TabLayout;

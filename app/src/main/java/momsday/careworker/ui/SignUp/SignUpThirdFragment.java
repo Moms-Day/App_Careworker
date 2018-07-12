@@ -1,9 +1,7 @@
-package momsday.careworker.Main;
+package momsday.careworker.ui.SignUp;
 
-import android.content.Context;
-import android.net.Uri;
+
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,18 +9,18 @@ import android.view.ViewGroup;
 
 import momsday.careworker.R;
 
+public class SignUpThirdFragment extends Fragment {
 
-public class PatientListFragment extends Fragment {
-
-    public PatientListFragment() {
+    public SignUpThirdFragment() {
         // Required empty public constructor
     }
 
     @Override
-    @Nullable
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_patient_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_sign_up_third, container, false);
+
+        return view;
     }
 }

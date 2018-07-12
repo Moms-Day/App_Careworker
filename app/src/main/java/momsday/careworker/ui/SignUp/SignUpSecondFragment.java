@@ -1,4 +1,4 @@
-package momsday.careworker.SignUp;
+package momsday.careworker.ui.SignUp;
 
 
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package momsday.careworker.SignUp;
+package momsday.careworker.ui.SignUp;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import momsday.careworker.R;
-import momsday.careworker.Start.StartActivity;
+import momsday.careworker.ui.Start.StartActivity;
 import momsday.careworker.databinding.ActivitySignUpBinding;
 
 public class SignUpActivity extends AppCompatActivity {

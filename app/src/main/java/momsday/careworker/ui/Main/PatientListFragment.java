@@ -32,7 +32,7 @@ public class PatientListFragment extends Fragment {
     @Nullable
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflaate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_patient_list, container, false);
         view = binding.getRoot();
 

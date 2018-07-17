@@ -1,6 +1,8 @@
 package momsday.careworker.ui.Main;
 
 
+import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,11 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import momsday.careworker.R;
+import momsday.careworker.databinding.FragmentWriteFormBinding;
+import momsday.careworker.ui.Login.LoginActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class WriteFormFragment extends Fragment {
+
+    View view;
+    FragmentWriteFormBinding binding;
 
 
     public WriteFormFragment() {
@@ -26,7 +33,15 @@ public class WriteFormFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_write_form, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_write_form, container, false);
+        view = binding.getRoot();
+        binding.buttonWriteFormAll.setOnClickListener((v) -> {
+            getContext().startActivity(new Intent(getContext(), LoginActivity.class));
+        });
+        binding.buttonWriteFormChoose.setOnClickListener(v -> {
+
+        });
+        return view;
     }
 
 }

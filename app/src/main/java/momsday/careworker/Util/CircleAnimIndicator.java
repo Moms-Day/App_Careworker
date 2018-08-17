@@ -142,4 +142,3 @@ public class CircleAnimIndicator extends LinearLayout {
         view.setTag(view.getId(), false);
     }
 }
-

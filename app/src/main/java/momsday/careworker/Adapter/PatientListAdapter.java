@@ -1,5 +1,6 @@
 package momsday.careworker.Adapter;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import momsday.careworker.Model.PatientListModel;
 import momsday.careworker.Model.RequestListModel;
 import momsday.careworker.R;
+import momsday.careworker.ui.PatientInfo.PatientInfoActivity;
 
 public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.PatientListViewHolder> {
 
@@ -33,6 +35,11 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
     @Override
     public void onBindViewHolder(@NonNull PatientListAdapter.PatientListViewHolder holder, int position) {
         PatientListModel model = models.get(position);
+        holder.itemView.setOnClickListener((v) -> {
+            Intent intent = new Intent(holder.itemView.getContext(), PatientInfoActivity.class);
+//            intent.putExtra("")
+            holder.itemView.getContext().startActivity(intent);
+        });
         holder.name.setText(model.getName());
         holder.protectorName.setText(model.getProtectorName());
         holder.info.setText(model.getInfo());

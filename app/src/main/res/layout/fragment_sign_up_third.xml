@@ -1,144 +1,159 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.SignUp.SignUpThirdFragment">
+<layout>
 
-    <TextView
-        android:id="@+id/tv_signUp3_phoneNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:text="휴대전화"
-        android:textColor="@color/colorGray"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/et_signUp3_phoneNum"
-        app:layout_constraintStart_toStartOf="@+id/guideline_signUp3_left"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+    <data>
 
-    <EditText
-        android:id="@+id/et_signUp3_phoneNum"
-        style="@style/BaseEditTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:hint="전화번호를 입력해 주세요 (필수)"
-        app:layout_constraintBottom_toTopOf="@+id/tv_signUp3_code"
-        app:layout_constraintEnd_toStartOf="@+id/btn_signUp3_phoneAuth"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/guideline_signUp3_left"
-        app:layout_constraintTop_toBottomOf="@+id/tv_signUp3_phoneNum" />
+        <variable
+            name="vm"
+            type="momsday.careworker.ui.SignUp.SignUpViewModel" />
+    </data>
 
-    <Button
-        android:id="@+id/btn_signUp3_phoneAuth"
-        android:layout_width="48dp"
-        android:layout_height="0dp"
-        android:background="@color/colorPrimary"
-        android:text="인증"
-        android:textColor="@color/colorWhite"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/et_signUp3_phoneNum"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_signUp3_right"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/et_signUp3_phoneNum"
-        app:layout_constraintTop_toTopOf="@+id/et_signUp3_phoneNum" />
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.SignUp.SignUpThirdFragment">
 
-    <TextView
-        android:id="@+id/tv_signUp3_code"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="인증번호"
-        android:textColor="@color/colorGray"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/et_signUp3_phoneCode"
-        app:layout_constraintStart_toStartOf="@+id/guideline_signUp3_left"
-        app:layout_constraintTop_toBottomOf="@+id/et_signUp3_phoneNum" />
+        <TextView
+            android:id="@+id/tv_signUp3_phoneNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="휴대전화"
+            android:textColor="@color/colorGray"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/et_signUp3_phoneNum"
+            app:layout_constraintStart_toStartOf="@+id/guideline_signUp3_left"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-    <EditText
-        android:id="@+id/et_signUp3_phoneCode"
-        style="@style/BaseEditTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="인증번호를 입력해주세요."
-        app:layout_constraintBottom_toTopOf="@+id/tv_signUp3_hospitalCode"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_signUp3_right"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/guideline_signUp3_left"
-        app:layout_constraintTop_toBottomOf="@+id/tv_signUp3_code" />
+        <EditText
+            android:id="@+id/et_signUp3_phoneNum"
+            style="@style/BaseEditTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:hint="전화번호를 입력해 주세요 (필수)"
+            android:inputType="phone"
+            android:text="@={vm.phoneNum}"
+            app:layout_constraintBottom_toTopOf="@+id/tv_signUp3_code"
+            app:layout_constraintEnd_toStartOf="@+id/btn_signUp3_phoneAuth"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline_signUp3_left"
+            app:layout_constraintTop_toBottomOf="@+id/tv_signUp3_phoneNum" />
 
-    <TextView
-        android:id="@+id/tv_signUp3_hospitalCode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="병원코드"
-        android:textColor="@color/colorGray"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/et_signUp3_hospitalCode"
-        app:layout_constraintStart_toStartOf="@+id/guideline_signUp3_left"
-        app:layout_constraintTop_toBottomOf="@+id/et_signUp3_phoneCode" />
+        <Button
+            android:id="@+id/btn_signUp3_phoneAuth"
+            android:layout_width="48dp"
+            android:layout_height="0dp"
+            android:background="@color/colorPrimary"
+            android:text="인증"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/et_signUp3_phoneNum"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_signUp3_right"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/et_signUp3_phoneNum"
+            app:layout_constraintTop_toTopOf="@+id/et_signUp3_phoneNum" />
 
-    <EditText
-        android:id="@+id/et_signUp3_hospitalCode"
-        style="@style/BaseEditTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="요양병원 / 요양원 시설번호를 입력해주세요."
-        app:layout_constraintBottom_toTopOf="@+id/tv_signUp3_introduce"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_signUp3_right"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/guideline_signUp3_left"
-        app:layout_constraintTop_toBottomOf="@+id/tv_signUp3_hospitalCode" />
+        <TextView
+            android:id="@+id/tv_signUp3_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="인증번호"
+            android:textColor="@color/colorGray"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/et_signUp3_phoneCode"
+            app:layout_constraintStart_toStartOf="@+id/guideline_signUp3_left"
+            app:layout_constraintTop_toBottomOf="@+id/et_signUp3_phoneNum" />
 
-    <TextView
-        android:id="@+id/tv_signUp3_introduce"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="자기소개"
-        android:textColor="@color/colorGray"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/et_signUp3_introduce"
-        app:layout_constraintStart_toStartOf="@+id/guideline_signUp3_left"
-        app:layout_constraintTop_toBottomOf="@+id/et_signUp3_hospitalCode" />
+        <EditText
+            android:id="@+id/et_signUp3_phoneCode"
+            style="@style/BaseEditTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="인증번호를 입력해주세요."
+            android:text="@={vm.verify}"
+            app:layout_constraintBottom_toTopOf="@+id/tv_signUp3_hospitalCode"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_signUp3_right"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline_signUp3_left"
+            app:layout_constraintTop_toBottomOf="@+id/tv_signUp3_code" />
 
-    <EditText
-        android:id="@+id/et_signUp3_introduce"
-        style="@style/BaseEditTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="110dp"
-        android:layout_marginTop="8dp"
-        android:gravity="top"
-        android:hint="자기소개를 입력해주세요."
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_signUp3_right"
-        app:layout_constraintStart_toStartOf="@+id/guideline_signUp3_left"
-        app:layout_constraintTop_toBottomOf="@+id/tv_signUp3_introduce" />
+        <TextView
+            android:id="@+id/tv_signUp3_hospitalCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="병원코드"
+            android:textColor="@color/colorGray"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/et_signUp3_hospitalCode"
+            app:layout_constraintStart_toStartOf="@+id/guideline_signUp3_left"
+            app:layout_constraintTop_toBottomOf="@+id/et_signUp3_phoneCode" />
+
+        <EditText
+            android:id="@+id/et_signUp3_hospitalCode"
+            style="@style/BaseEditTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="요양병원 / 요양원 시설번호를 입력해주세요."
+            android:text="@={vm.hospitalCode}"
+            app:layout_constraintBottom_toTopOf="@+id/tv_signUp3_introduce"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_signUp3_right"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline_signUp3_left"
+            app:layout_constraintTop_toBottomOf="@+id/tv_signUp3_hospitalCode" />
+
+        <TextView
+            android:id="@+id/tv_signUp3_introduce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="자기소개"
+            android:textColor="@color/colorGray"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/et_signUp3_introduce"
+            app:layout_constraintStart_toStartOf="@+id/guideline_signUp3_left"
+            app:layout_constraintTop_toBottomOf="@+id/et_signUp3_hospitalCode" />
+
+        <EditText
+            android:id="@+id/et_signUp3_introduce"
+            style="@style/BaseEditTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="8dp"
+            android:gravity="top"
+            android:hint="자기소개를 입력해주세요."
+            android:text="@={vm.introduce}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_signUp3_right"
+            app:layout_constraintStart_toStartOf="@+id/guideline_signUp3_left"
+            app:layout_constraintTop_toBottomOf="@+id/tv_signUp3_introduce" />
 
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline_signUp3_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="64dp" />
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_signUp3_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="64dp" />
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline_signUp3_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="64dp" />
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_signUp3_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="64dp" />
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

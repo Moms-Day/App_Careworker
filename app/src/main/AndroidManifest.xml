@@ -26,7 +26,8 @@
             android:name=".ui.Main.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme" />
-        <activity android:name=".ui.WriteForm.WriteFormActivity"></activity>
+        <activity android:name=".ui.WriteForm.WriteFormActivity" />
+        <activity android:name=".ui.PatientInfo.PatientInfoActivity"></activity>
     </application>
 
 </manifest>

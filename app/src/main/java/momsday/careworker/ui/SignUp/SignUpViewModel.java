@@ -1,24 +1,34 @@
 package momsday.careworker.ui.SignUp;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
-import android.databinding.ObservableField;
-import android.support.annotation.Nullable;
+import android.util.Log;
 
-public class SignUpViewModel extends ViewModel {
+import com.google.gson.JsonObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+import momsday.careworker.Connecter.Api;
+import momsday.careworker.Connecter.Connect;
+import momsday.careworker.Util.DisposableViewModel;
+
+public class SignUpViewModel extends DisposableViewModel {
 
     private MutableLiveData<String> id = new MutableLiveData<>();
     private MutableLiveData<String> pw = new MutableLiveData<>();
     private MutableLiveData<String> confirm = new MutableLiveData<>();
     private MutableLiveData<String> name = new MutableLiveData<>();
-    private MutableLiveData<String> age = new MutableLiveData<>();
     private MutableLiveData<String> career = new MutableLiveData<>();
     private MutableLiveData<String> patient = new MutableLiveData<>();
     private MutableLiveData<String> phoneNum = new MutableLiveData<>();
     private MutableLiveData<String> verify = new MutableLiveData<>();
     private MutableLiveData<String> hospitalCode = new MutableLiveData<>();
     private MutableLiveData<String> introduce = new MutableLiveData<>();
+    private MutableLiveData<Integer> resCode = new MutableLiveData<>();
 
     public MutableLiveData<String> getId() {
         return id;
@@ -34,10 +44,6 @@ public class SignUpViewModel extends ViewModel {
 
     public MutableLiveData<String> getName() {
         return name;
-    }
-
-    public MutableLiveData<String> getAge() {
-        return age;
     }
 
     public MutableLiveData<String> getCareer() {
@@ -64,47 +70,29 @@ public class SignUpViewModel extends ViewModel {
         return introduce;
     }
 
-    //    public LiveData<String> getId() {
-//        return id;
-//    }
-//
-//    public LiveData<String> getPw() {
-//        return pw;
-//    }
-//
-//    public LiveData<String> getConfirm() {
-//        return confirm;
-//    }
-//
-//    public LiveData<String> getName() {
-//        return name;
-//    }
-//
-//    public LiveData<String> getAge() {
-//        return age;
-//    }
-//
-//    public LiveData<String> getCareer() {
-//        return career;
-//    }
-//
-//    public LiveData<String> getPatient() {
-//        return patient;
-//    }
-//
-//    public LiveData<String> getPhoneNum() {
-//        return phoneNum;
-//    }
-//
-//    public LiveData<String> getVerify() {
-//        return verify;
-//    }
-//
-//    public LiveData<String> getHospitalCode() {
-//        return hospitalCode;
-//    }
-//
-//    public LiveData<String> getIntroduce() {
-//        return introduce;
-//    }
+    public MutableLiveData<Integer> getResCode() {
+        return resCode;
+    }
+
+    public void signUp() {
+        Api api = Connect.getAPI();
+
+        JsonObject requestMap = new JsonObject();
+        requestMap.addProperty("id", id.getValue());
+        requestMap.addProperty("pw", pw.getValue());
+        requestMap.addProperty("name", name.getValue());
+        requestMap.addProperty("career", Integer.parseInt(career.getValue()));
+        requestMap.addProperty("patientInCharge", Integer.parseInt(patient.getValue()));
+        requestMap.addProperty("phoneNumber", phoneNum.getValue());
+        requestMap.addProperty("certifyCode", verify.getValue());
+        requestMap.addProperty("facilityCode", hospitalCode.getValue());
+        requestMap.addProperty("bio", introduce.getValue());
+        Log.d("SignUpViewModel", requestMap.toString());
+        addDisposable(api.signUp(requestMap)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(res -> {
+                    resCode.setValue(res.code());
+                }));
+    }
 }

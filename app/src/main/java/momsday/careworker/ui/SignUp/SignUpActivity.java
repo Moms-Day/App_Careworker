@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
 import momsday.careworker.Adapter.SignUpPagerAdapter;
 import momsday.careworker.R;
 import momsday.careworker.Util.DataBindingActivity;
@@ -34,7 +36,9 @@ public class SignUpActivity extends DataBindingActivity<ActivitySignUpBinding> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = ViewModelProviders.of(this).get(SignUpViewModel.class);
-
+        viewModel.getResCode().observe(this, (res) -> {
+            Toast.makeText(getBaseContext(), "" + res, Toast.LENGTH_SHORT).show();
+        });
         init();
 
         binding.viewPagerSignUp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -55,8 +59,11 @@ public class SignUpActivity extends DataBindingActivity<ActivitySignUpBinding> {
                     case 2:
                         binding.buttonSignUpNext.setText("회원가입");
                         binding.buttonSignUpNext.setOnClickListener(v -> {
-                            Intent intent = new Intent(SignUpActivity.this, StartActivity.class);
-                            startActivity(intent);
+
+                            viewModel.signUp();
+
+//                            Intent intent = new Intent(SignUpActivity.this, StartActivity.class);
+//                            startActivity(intent);
                         });
                         break;
                 }

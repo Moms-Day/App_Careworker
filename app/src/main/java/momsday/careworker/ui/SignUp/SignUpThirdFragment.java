@@ -28,6 +28,7 @@ public class SignUpThirdFragment extends DataBindingFragment<FragmentSignUpThird
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        super.onCreateView(inflater,container,savedInstanceState);
         viewModel = ViewModelProviders.of(getActivity()).get(SignUpViewModel.class);
         binding.setVm(viewModel);
         return view;

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import momsday.careworker.R;
-import momsday.careworker.Util.DataBindingFragment;
+import momsday.careworker.util.DataBindingFragment;
 import momsday.careworker.databinding.FragmentSignUpSecondBinding;
 
 /**

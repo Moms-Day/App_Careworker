@@ -1,4 +1,4 @@
-package momsday.careworker.Adapter;
+package momsday.careworker.adapter;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import momsday.careworker.Model.PatientListModel;
-import momsday.careworker.Model.RequestListModel;
+import momsday.careworker.model.PatientListModel;
 import momsday.careworker.R;
 import momsday.careworker.ui.PatientInfo.PatientInfoActivity;
 

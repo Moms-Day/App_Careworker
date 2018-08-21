@@ -1,4 +1,4 @@
-package momsday.careworker.Util;
+package momsday.careworker.util;
 
 import android.arch.lifecycle.ViewModel;
 

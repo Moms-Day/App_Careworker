@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import momsday.careworker.Adapter.PatientListAdapter;
-import momsday.careworker.Adapter.RequestListAdapter;
-import momsday.careworker.Model.PatientListModel;
-import momsday.careworker.Model.RequestListModel;
+import momsday.careworker.adapter.PatientListAdapter;
+import momsday.careworker.adapter.RequestListAdapter;
+import momsday.careworker.model.PatientListModel;
+import momsday.careworker.model.RequestListModel;
 import momsday.careworker.R;
 import momsday.careworker.databinding.FragmentPatientListBinding;
 

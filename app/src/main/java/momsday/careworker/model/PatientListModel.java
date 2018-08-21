@@ -1,4 +1,4 @@
-package momsday.careworker.Model;
+package momsday.careworker.model;
 
 public class PatientListModel {
     private String name;

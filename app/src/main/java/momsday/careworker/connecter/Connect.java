@@ -1,4 +1,4 @@
-package momsday.careworker.Connecter;
+package momsday.careworker.connecter;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

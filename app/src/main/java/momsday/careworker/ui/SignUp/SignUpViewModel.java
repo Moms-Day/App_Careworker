@@ -5,16 +5,11 @@ import android.util.Log;
 
 import com.google.gson.JsonObject;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import momsday.careworker.Connecter.Api;
-import momsday.careworker.Connecter.Connect;
-import momsday.careworker.Util.DisposableViewModel;
+import momsday.careworker.connecter.Api;
+import momsday.careworker.connecter.Connect;
+import momsday.careworker.util.DisposableViewModel;
 
 public class SignUpViewModel extends DisposableViewModel {
 

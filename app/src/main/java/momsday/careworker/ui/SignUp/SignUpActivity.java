@@ -1,22 +1,13 @@
 package momsday.careworker.ui.SignUp;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
-import android.databinding.DataBindingUtil;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import org.json.JSONException;
-
-import momsday.careworker.Adapter.SignUpPagerAdapter;
+import momsday.careworker.adapter.SignUpPagerAdapter;
 import momsday.careworker.R;
-import momsday.careworker.Util.DataBindingActivity;
-import momsday.careworker.ui.Start.StartActivity;
+import momsday.careworker.util.DataBindingActivity;
 import momsday.careworker.databinding.ActivitySignUpBinding;
 
 public class SignUpActivity extends DataBindingActivity<ActivitySignUpBinding> {
@@ -72,6 +63,7 @@ public class SignUpActivity extends DataBindingActivity<ActivitySignUpBinding> {
             @Override
             public void onPageSelected(int position) {
                 binding.indicatorSignUp.selectDot(position);
+
             }
 
             @Override

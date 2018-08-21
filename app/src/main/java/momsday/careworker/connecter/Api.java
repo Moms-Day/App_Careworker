@@ -1,10 +1,6 @@
-package momsday.careworker.Connecter;
+package momsday.careworker.connecter;
 
 import com.google.gson.JsonObject;
-
-import org.json.JSONObject;
-
-import java.util.Map;
 
 import io.reactivex.Single;
 import okhttp3.ResponseBody;

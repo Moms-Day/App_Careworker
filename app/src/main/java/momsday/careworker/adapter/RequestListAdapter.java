@@ -1,6 +1,5 @@
-package momsday.careworker.Adapter;
+package momsday.careworker.adapter;
 
-import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import momsday.careworker.Model.RequestListModel;
+import momsday.careworker.model.RequestListModel;
 import momsday.careworker.R;
 
 public class RequestListAdapter extends RecyclerView.Adapter<RequestListAdapter.RequestListViewHolder> {

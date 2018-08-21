@@ -10,7 +10,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/all_back_left_redline">
+        android:background="@drawable/all_back_left_greenline">
 
         <TextView
             android:id="@+id/tv_conReqItem_name"

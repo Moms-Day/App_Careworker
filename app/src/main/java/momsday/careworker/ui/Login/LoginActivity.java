@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
             setResult(RESULT_OK, intent);
             finish();
         });
+
     }
 
     void onLoginButtonClick() {

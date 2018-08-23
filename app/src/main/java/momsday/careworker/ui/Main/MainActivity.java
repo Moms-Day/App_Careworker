@@ -8,6 +8,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import momsday.careworker.R;
 import momsday.careworker.databinding.ActivityMainBinding;
@@ -41,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
         r.tabLayoutMain.addTab(r.tabLayoutMain.newTab().setText("채팅"));
         r.tabLayoutMain.addTab(r.tabLayoutMain.newTab().setText("폼 작성"));
 
+        ((TextView) (((LinearLayout) ((LinearLayout) r.tabLayoutMain.getChildAt(0)).getChildAt(0)).getChildAt(1))).setScaleY(-1);
+        ((TextView) (((LinearLayout) ((LinearLayout) r.tabLayoutMain.getChildAt(0)).getChildAt(1)).getChildAt(1))).setScaleY(-1);
+        ((TextView) (((LinearLayout) ((LinearLayout) r.tabLayoutMain.getChildAt(0)).getChildAt(2)).getChildAt(1))).setScaleY(-1);
+//        TextView tv2 = (TextView) (((LinearLayout) ((LinearLayout) r.tabLayoutMain.getChildAt(0)).getChildAt(1)).getChildAt(1));
+//        tv2.setScaleY(-1);
+//        TextView tv3 = ((TextView) (((LinearLayout) ((LinearLayout) r.tabLayoutMain.getChildAt(0)).getChildAt(2)).getChildAt(1)));
+//        tv3.setScaleY(-1);
         r.mainViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(r.tabLayoutMain));
         r.tabLayoutMain.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(r.mainViewPager));
 

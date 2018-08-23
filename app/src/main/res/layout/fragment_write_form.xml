@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.Main.WriteFormFragment">
@@ -23,37 +23,13 @@
             android:orientation="vertical"
             app:layout_constraintGuide_end="16dp" />
 
-        <Button
-            android:id="@+id/button_writeForm_all"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_writeForm_patientList"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/colorSemiBlue"
-            android:fontFamily="sans-serif"
-            android:text="공통"
-            android:textColor="#4d4d4d"
-            android:textSize="18sp"
-            android:textStyle="normal"
-            app:layout_constraintBottom_toTopOf="@+id/button_writeForm_choose"
+            android:layout_height="match_parent"
+            android:layout_marginTop="32dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline_writeForm_right"
             app:layout_constraintStart_toStartOf="@+id/guideline_writeForm_left"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <Button
-            android:id="@+id/button_writeForm_choose"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/colorSemiBlue"
-            android:fontFamily="sans-serif"
-            android:text="환자 선택"
-            android:textColor="#4d4d4d"
-            android:textSize="18sp"
-            android:textStyle="normal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline_writeForm_right"
-            app:layout_constraintStart_toStartOf="@+id/guideline_writeForm_left"
-            app:layout_constraintTop_toBottomOf="@+id/button_writeForm_all" />
+            app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </layout>

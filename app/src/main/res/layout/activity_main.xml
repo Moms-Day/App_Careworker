@@ -17,7 +17,7 @@
                 android:id="@+id/toolbar_main"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/colorWhite"
+                android:background="@drawable/all_back_bottom_blackline"
                 app:titleTextColor="@color/colorWhite">
 
                 <android.support.constraint.ConstraintLayout
@@ -58,6 +58,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorWhite"
+                android:scaleY="-1"
+                app:tabIndicatorColor="@color/colorGray"
                 app:tabSelectedTextColor="#7a7a7a"
                 app:tabTextColor="#4a4a4a" />
 

@@ -43,13 +43,9 @@ public class MainActivity extends AppCompatActivity {
         r.tabLayoutMain.addTab(r.tabLayoutMain.newTab().setText("채팅"));
         r.tabLayoutMain.addTab(r.tabLayoutMain.newTab().setText("폼 작성"));
 
-        ((TextView) (((LinearLayout) ((LinearLayout) r.tabLayoutMain.getChildAt(0)).getChildAt(0)).getChildAt(1))).setScaleY(-1);
-        ((TextView) (((LinearLayout) ((LinearLayout) r.tabLayoutMain.getChildAt(0)).getChildAt(1)).getChildAt(1))).setScaleY(-1);
-        ((TextView) (((LinearLayout) ((LinearLayout) r.tabLayoutMain.getChildAt(0)).getChildAt(2)).getChildAt(1))).setScaleY(-1);
-//        TextView tv2 = (TextView) (((LinearLayout) ((LinearLayout) r.tabLayoutMain.getChildAt(0)).getChildAt(1)).getChildAt(1));
-//        tv2.setScaleY(-1);
-//        TextView tv3 = ((TextView) (((LinearLayout) ((LinearLayout) r.tabLayoutMain.getChildAt(0)).getChildAt(2)).getChildAt(1)));
-//        tv3.setScaleY(-1);
+        ((LinearLayout) ((LinearLayout) r.tabLayoutMain.getChildAt(0)).getChildAt(0)).getChildAt(1).setScaleY(-1);
+        ((LinearLayout) ((LinearLayout) r.tabLayoutMain.getChildAt(0)).getChildAt(1)).getChildAt(1).setScaleY(-1);
+        ((LinearLayout) ((LinearLayout) r.tabLayoutMain.getChildAt(0)).getChildAt(2)).getChildAt(1).setScaleY(-1);
         r.mainViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(r.tabLayoutMain));
         r.tabLayoutMain.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(r.mainViewPager));
 
@@ -67,13 +63,10 @@ public class MainActivity extends AppCompatActivity {
             switch (position) {
                 case 0:
                     return patientListFragment;
-//                    return new PatientListFragment();
                 case 1:
                     return chattingFragment;
-//                    return new ChattingFragment();
                 case 2:
                     return writeFormFragment;
-//                    return new WriteFormFragment();
                 default:
                     return null;
             }

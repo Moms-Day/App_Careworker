@@ -10,10 +10,10 @@
 
         <ImageView
             android:id="@+id/login_imgView_logo"
-            android:layout_width="wrap_content"
+            android:layout_width="124dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/ic_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"

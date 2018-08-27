@@ -45,6 +45,8 @@ public class PatientListFragment extends Fragment {
         patientList.add(new PatientListModel("되냐?", "되냐고", "되냔말이야", PatientListModel.VIEWTYPE_PATIENT));
         patientList.add(new PatientListModel("되냐?", "되냐고", "되냔말이야", PatientListModel.VIEWTYPE_PATIENT));
         patientList.add(new PatientListModel("되냐?", "되냐고", "되냔말이야", PatientListModel.VIEWTYPE_PATIENT));
+        patientList.add(new PatientListModel("되냐?", "되냐고", "되냔말이야", PatientListModel.VIEWTYPE_PATIENT));
+        patientList.add(new PatientListModel("되냐?", "되냐고", "되냔말이야", PatientListModel.VIEWTYPE_PATIENT));
 
         binding.rvPatientListParent.setAdapter(new PatientListAdapter(patientList));
         binding.rvPatientListParent.setHasFixedSize(true);

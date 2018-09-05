@@ -27,9 +27,9 @@ public class SignUpActivity extends DataBindingActivity<ActivitySignUpBinding> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = ViewModelProviders.of(this).get(SignUpViewModel.class);
-        viewModel.getResCode().observe(this, (res) -> {
-            Toast.makeText(getBaseContext(), "" + res, Toast.LENGTH_SHORT).show();
-        });
+//        viewModel.getResCode().observe(this, (res) -> {
+//            Toast.makeText(getBaseContext(), "" + res, Toast.LENGTH_SHORT).show();
+//        });
         init();
 
         binding.viewPagerSignUp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

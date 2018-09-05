@@ -1,6 +1,8 @@
 package momsday.careworker.ui.Main;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.service.voice.AlwaysOnHotwordDetector;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 

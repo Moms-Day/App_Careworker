@@ -33,9 +33,6 @@ public class SignUpFirstFragment extends DataBindingFragment<FragmentSignUpFirst
         super.onCreateView(inflater, container, savedInstanceState);
         SignUpViewModel signUpViewModel = ViewModelProviders.of(getActivity()).get(SignUpViewModel.class);
         binding.setVm(signUpViewModel);
-        signUpViewModel.getId().observe(this, (s) -> {
-            Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
-        });
 
         return view;
     }

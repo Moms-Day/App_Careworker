@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.WriteForm.AddConditionFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/addCondition_condition_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="건강상태"
+        android:textColor="@color/colorText"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/addCondition_begin_GuideLine"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/addCondition_temperature_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="체온"
+        android:textColor="@color/colorText"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/addCondition_begin_GuideLine"
+        app:layout_constraintTop_toBottomOf="@+id/addCondition_condition_tv" />
+
+    <RadioGroup
+        android:id="@+id/addCondition_temperature_rg"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:background="@drawable/all_back_filled_green"
+        app:layout_constraintEnd_toStartOf="@+id/addCondition_end_GuideLine"
+        app:layout_constraintStart_toStartOf="@+id/addCondition_begin_GuideLine"
+        app:layout_constraintTop_toBottomOf="@+id/addCondition_temperature_tv">
+
+        <RadioButton
+            android:checked="true"
+            android:id="@+id/addCondition_tem_low_rb"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:button="@null"
+            android:drawableTop="@drawable/selector_condition"
+            android:gravity="bottom|center_horizontal"
+            android:layout_weight="1"
+            android:text="낮음" />
+        <RadioButton
+            android:id="@+id/addCondition_tem_middle_rb"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:button="@null"
+            android:drawableTop="@drawable/selector_condition"
+            android:gravity="bottom|center_horizontal"
+            android:layout_weight="1"
+            android:text="중간" />
+        <RadioButton
+            android:id="@+id/addCondition_tem_high_rb"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:button="@null"
+            android:drawableTop="@drawable/selector_condition"
+            android:gravity="bottom|center_horizontal"
+            android:layout_weight="1"
+            android:text="높음" />
+    </RadioGroup>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/addCondition_begin_GuideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="8dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/addCondition_end_GuideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="8dp" />
+
+</android.support.constraint.ConstraintLayout>

@@ -36,9 +36,6 @@ public class SignUpSecondFragment extends DataBindingFragment<FragmentSignUpSeco
         viewModel = ViewModelProviders.of(getActivity()).get(SignUpViewModel.class);
         binding.setVm(viewModel);
 
-        viewModel.getName().observe(this, (s) -> {
-            Toast.makeText(getContext(), viewModel.getId().getValue(), Toast.LENGTH_SHORT).show();
-        });
         return view;
     }
 

@@ -10,4 +10,5 @@
     <color name="colorSemiGreen">#ececd0</color>
     <color name="colorGray">#4D4D4D</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorText">#2c2c2c</color>
 </resources>

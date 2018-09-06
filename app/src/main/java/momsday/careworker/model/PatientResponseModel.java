@@ -28,7 +28,7 @@ public class PatientResponseModel {
     }
 
 
-class ConnectionRequest {
+public class ConnectionRequest {
 
         @SerializedName("p_age")
         private int age;
@@ -45,65 +45,65 @@ class ConnectionRequest {
         @SerializedName("requester_id")
         private String requesterId;
 
-        public int getPAge() {
-            return age;
-        }
 
-        public void setPAge(int pAge) {
-            this.age = pAge;
-        }
-
-        public boolean getPGender() {
-            return gender;
-        }
-
-        public void setPGender(boolean pGender) {
-            this.gender = pGender;
-        }
-
-        public String getPName() {
-            return parentName;
-        }
-
-        public void setPName(String pName) {
-            this.parentName = pName;
-        }
-
-        public String getRName() {
-            return userName;
-        }
-
-        public void setRName(String rName) {
-            this.userName = rName;
-        }
-
-        public String getReqId() {
-            return reqId;
-        }
-
-        public void setReqId(String reqId) {
-            this.reqId = reqId;
-        }
-
-        public String getRequestTime() {
-            return requestTime;
-        }
-
-        public void setRequestTime(String requestTime) {
-            this.requestTime = requestTime;
-        }
-
-        public String getRequesterId() {
-            return requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
+    public int getAge() {
+        return age;
     }
 
-    class InChargeList {
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public boolean isGender() {
+        return gender;
+    }
+
+    public void setGender(boolean gender) {
+        this.gender = gender;
+    }
+
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getReqId() {
+        return reqId;
+    }
+
+    public void setReqId(String reqId) {
+        this.reqId = reqId;
+    }
+
+    public String getRequestTime() {
+        return requestTime;
+    }
+
+    public void setRequestTime(String requestTime) {
+        this.requestTime = requestTime;
+    }
+
+    public String getRequesterId() {
+        return requesterId;
+    }
+
+    public void setRequesterId(String requesterId) {
+        this.requesterId = requesterId;
+    }
+}
+
+    public class InChargeList {
 
         @SerializedName("age")
         private Integer age;
@@ -116,7 +116,7 @@ class ConnectionRequest {
         @SerializedName("name")
         private String name;
 
-        public Integer getAge() {
+        public int getAge() {
             return age;
         }
 

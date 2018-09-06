@@ -1,5 +1,6 @@
 package momsday.careworker.ui.main;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,9 +17,12 @@ import momsday.careworker.model.PatientListModel;
 import momsday.careworker.R;
 import momsday.careworker.databinding.FragmentPatientListBinding;
 import momsday.careworker.util.DataBindingFragment;
+import momsday.careworker.viewModel.PatientListViewModel;
 
 
 public class PatientListFragment extends DataBindingFragment<FragmentPatientListBinding> {
+
+    PatientListViewModel patientListViewModel;
 
     public PatientListFragment() {
         // Required empty public constructor
@@ -34,22 +38,16 @@ public class PatientListFragment extends DataBindingFragment<FragmentPatientList
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        ArrayList<PatientListModel> patientList = new ArrayList<>();
-        patientList.add(new PatientListModel("요청 목록(3)", PatientListModel.VIEWTYPE_HEADER));
-        patientList.add(new PatientListModel("되냐?", "되냐고", "되냔말이야", PatientListModel.VIEWTYPE_REQUEST));
-        patientList.add(new PatientListModel("되냐?", "되냐고", "되냔말이야", PatientListModel.VIEWTYPE_REQUEST));
-        patientList.add(new PatientListModel("되냐?", "되냐고", "되냔말이야", PatientListModel.VIEWTYPE_REQUEST));
-        patientList.add(new PatientListModel("노부모 목록(3)", PatientListModel.VIEWTYPE_HEADER));
-        patientList.add(new PatientListModel("되냐?", "되냐고", "되냔말이야", PatientListModel.VIEWTYPE_PATIENT));
-        patientList.add(new PatientListModel("되냐?", "되냐고", "되냔말이야", PatientListModel.VIEWTYPE_PATIENT));
-        patientList.add(new PatientListModel("되냐?", "되냐고", "되냔말이야", PatientListModel.VIEWTYPE_PATIENT));
-        patientList.add(new PatientListModel("되냐?", "되냐고", "되냔말이야", PatientListModel.VIEWTYPE_PATIENT));
-        patientList.add(new PatientListModel("되냐?", "되냐고", "되냔말이야", PatientListModel.VIEWTYPE_PATIENT));
-        patientList.add(new PatientListModel("되냐?", "되냐고", "되냔말이야", PatientListModel.VIEWTYPE_PATIENT));
+        patientListViewModel = ViewModelProviders.of(this.getActivity()).get(PatientListViewModel.class);
 
-        binding.rvPatientListParent.setAdapter(new PatientListAdapter(patientList));
+        PatientListAdapter adapter = new PatientListAdapter(patientListViewModel.getPatientList().getValue());
+        binding.rvPatientListParent.setAdapter(adapter);
         binding.rvPatientListParent.setHasFixedSize(true);
         binding.rvPatientListParent.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        patientListViewModel.getPatientList().observe(this, (res) -> {
+            adapter.notifyDataSetChanged();
+        });
 
         return view;
     }

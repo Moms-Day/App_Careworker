@@ -21,6 +21,8 @@ import momsday.careworker.connecter.Connect;
 import momsday.careworker.databinding.ActivityLoginBinding;
 import momsday.careworker.ui.main.MainActivity;
 
+import static momsday.careworker.util.TokenManagerKt.saveToken;
+
 public class LoginActivity extends AppCompatActivity {
 
     ActivityLoginBinding binding;
@@ -42,9 +44,11 @@ public class LoginActivity extends AppCompatActivity {
                     .subscribe(res -> {
                         switch (res.code()) {
                             case 200:
-                                Toast.makeText(getBaseContext(), res.body().getAccessToken(), Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getBaseContext(), res.body().getAccessToken(), Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                saveToken(getBaseContext(), res.body().getAccessToken(), true);
+                                saveToken(getBaseContext(), res.body().getRefreshToken(), false);
                                 startActivity(intent);
                                 ActivityCompat.finishAffinity(this);
                         }

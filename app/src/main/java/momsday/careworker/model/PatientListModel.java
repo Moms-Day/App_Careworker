@@ -10,12 +10,26 @@ public class PatientListModel {
     private String protectorName;
     private String age;
     private int viewType;
+    private String id;
+    private String requestTime;
+    private String requestId;
 
-    public PatientListModel(String name, String info, String protectorName, int viewType) {
+    public PatientListModel(String name, String age, String protectorName, String id, int viewType) {
         this.name = name;
-        this.info = info;
+        this.age = age;
+        this.protectorName = protectorName;
+        this.id = id;
+        this.viewType = viewType;
+    }
+
+    public PatientListModel(String name, String age, String protectorName, String id, String requestId, int viewType) {
+        this.name = name;
+        this.age = age;
         this.protectorName = protectorName;
         this.viewType = viewType;
+        this.id = id;
+        this.requestTime = requestTime;
+        this.requestId = requestId;
     }
 
     public PatientListModel(String name, int viewType) {

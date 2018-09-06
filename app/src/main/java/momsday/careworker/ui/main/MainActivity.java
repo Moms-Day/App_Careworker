@@ -1,8 +1,6 @@
-package momsday.careworker.ui.Main;
+package momsday.careworker.ui.main;
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.service.voice.AlwaysOnHotwordDetector;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 
@@ -11,7 +9,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import momsday.careworker.R;
 import momsday.careworker.databinding.ActivityMainBinding;

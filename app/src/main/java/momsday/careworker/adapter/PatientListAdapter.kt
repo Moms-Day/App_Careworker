@@ -11,7 +11,7 @@ import java.util.ArrayList
 
 import momsday.careworker.model.PatientListModel
 import momsday.careworker.R
-import momsday.careworker.ui.PatientInfo.PatientInfoActivity
+import momsday.careworker.ui.patientInfo.PatientInfoActivity
 
 class PatientListAdapter(private val models: ArrayList<PatientListModel>) : RecyclerView.Adapter<PatientListViewBinder>() {
 

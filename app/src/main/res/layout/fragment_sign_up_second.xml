@@ -7,13 +7,13 @@
 
         <variable
             name="vm"
-            type="momsday.careworker.ui.SignUp.SignUpViewModel" />
+            type="momsday.careworker.ui.signUp.SignUpViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.SignUp.SignUpSecondFragment">
+        tools:context=".ui.signUp.SignUpSecondFragment">
 
         <TextView
             android:id="@+id/tv_signUp2_name"

@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import momsday.careworker.ui.Start.StartActivity;
+import momsday.careworker.ui.start.StartActivity;
 
 public class SplashActivity extends AppCompatActivity {
 

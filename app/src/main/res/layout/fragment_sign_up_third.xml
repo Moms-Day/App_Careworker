@@ -4,7 +4,7 @@
 
         <variable
             name="vm"
-            type="momsday.careworker.ui.SignUp.SignUpViewModel" />
+            type="momsday.careworker.ui.signUp.SignUpViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -12,7 +12,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.SignUp.SignUpThirdFragment">
+        tools:context=".ui.signUp.SignUpThirdFragment">
 
         <TextView
             android:id="@+id/tv_signUp3_phoneNum"

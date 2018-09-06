@@ -4,9 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import momsday.careworker.ui.SignUp.SignUpFirstFragment;
-import momsday.careworker.ui.SignUp.SignUpSecondFragment;
-import momsday.careworker.ui.SignUp.SignUpThirdFragment;
+import momsday.careworker.ui.signUp.SignUpFirstFragment;
+import momsday.careworker.ui.signUp.SignUpSecondFragment;
+import momsday.careworker.ui.signUp.SignUpThirdFragment;
 
 public class SignUpPagerAdapter extends FragmentStatePagerAdapter {
     public SignUpPagerAdapter(FragmentManager fm) {

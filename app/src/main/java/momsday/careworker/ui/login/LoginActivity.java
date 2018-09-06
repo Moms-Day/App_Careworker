@@ -1,6 +1,5 @@
-package momsday.careworker.ui.Login;
+package momsday.careworker.ui.login;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -12,19 +11,15 @@ import com.google.gson.JsonObject;
 
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import momsday.careworker.R;
 import momsday.careworker.connecter.Api;
 import momsday.careworker.connecter.Connect;
 import momsday.careworker.databinding.ActivityLoginBinding;
-import momsday.careworker.model.JWTModel;
-import momsday.careworker.ui.Main.MainActivity;
-import retrofit2.Response;
+import momsday.careworker.ui.main.MainActivity;
 
 public class LoginActivity extends AppCompatActivity {
 

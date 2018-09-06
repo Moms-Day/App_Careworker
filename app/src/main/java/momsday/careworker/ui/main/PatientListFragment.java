@@ -1,4 +1,4 @@
-package momsday.careworker.ui.Main;
+package momsday.careworker.ui.main;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -12,28 +12,27 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import momsday.careworker.adapter.PatientListAdapter;
-import momsday.careworker.adapter.RequestListAdapter;
 import momsday.careworker.model.PatientListModel;
-import momsday.careworker.model.RequestListModel;
 import momsday.careworker.R;
 import momsday.careworker.databinding.FragmentPatientListBinding;
+import momsday.careworker.util.DataBindingFragment;
 
 
-public class PatientListFragment extends Fragment {
-
-    View view;
-    FragmentPatientListBinding binding;
+public class PatientListFragment extends DataBindingFragment<FragmentPatientListBinding> {
 
     public PatientListFragment() {
         // Required empty public constructor
     }
 
     @Override
+    public int getLayoutId() {
+        return R.layout.fragment_patient_list;
+    }
+
+    @Override
     @Nullable
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_patient_list, container, false);
-        view = binding.getRoot();
 
         ArrayList<PatientListModel> patientList = new ArrayList<>();
         patientList.add(new PatientListModel("요청 목록(3)", PatientListModel.VIEWTYPE_HEADER));

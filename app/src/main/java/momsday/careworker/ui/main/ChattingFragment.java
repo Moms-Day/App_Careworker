@@ -1,4 +1,4 @@
-package momsday.careworker.ui.Main;
+package momsday.careworker.ui.main;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

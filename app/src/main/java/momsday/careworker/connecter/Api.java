@@ -33,4 +33,14 @@ public interface Api {
 
     @PATCH("patients/{p_id}")
     Flowable<Response<Void>> patchPatientMemo(@Header("Authorization") String token, @Path("p_id") String patientId, @Body JsonObject req);
+
+    @POST("send/form/meal")
+    Flowable<Response<Void>> sendMeal(@Header("Authorization") String token, @Body JsonObject req);
+
+    @POST("send/form/photo")
+    Flowable<Response<Void>> sendPhoto(@Header("Authorization") String token, @Body JsonObject req);
+
+    @POST("send/form/schedule")
+    Flowable<Response<Void>> sendSchedule(@Header("Authorization") String token, @Body JsonObject req);
+
 }

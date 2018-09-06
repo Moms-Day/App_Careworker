@@ -1,4 +1,4 @@
-package momsday.careworker.ui.WriteForm;
+package momsday.careworker.ui.writeForm;
 
 
 import android.os.Bundle;

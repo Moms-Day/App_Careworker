@@ -1,4 +1,4 @@
-package momsday.careworker.ui.SignUp;
+package momsday.careworker.ui.signUp;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.util.Log;

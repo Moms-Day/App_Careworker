@@ -1,6 +1,8 @@
 package momsday.careworker.ui.main;
 
 
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,14 +18,16 @@ import momsday.careworker.R;
 import momsday.careworker.adapter.WriteFormPatientListAdapter;
 import momsday.careworker.databinding.FragmentWriteFormBinding;
 import momsday.careworker.model.WriteFormListModel;
+import momsday.careworker.ui.writeForm.WriteFormActivity;
 import momsday.careworker.util.DataBindingFragment;
+import momsday.careworker.viewModel.PatientListViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class WriteFormFragment extends DataBindingFragment<FragmentWriteFormBinding> {
 
-
+    PatientListViewModel patientListViewModel;
 
     public WriteFormFragment() {
         // Required empty public constructor
@@ -39,16 +43,22 @@ public class WriteFormFragment extends DataBindingFragment<FragmentWriteFormBind
     @Nullable
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ArrayList<WriteFormListModel> model = new ArrayList<>();
-        model.add(new WriteFormListModel("전체"));
-        model.add(new WriteFormListModel("ㅇㅇ"));
-        model.add(new WriteFormListModel("ㅁㅁ"));
-        model.add(new WriteFormListModel("ㅂㅂ"));
-        WriteFormPatientListAdapter adapter = new WriteFormPatientListAdapter(model);
-        binding.rvWriteFormPatientList.setAdapter(adapter);
-        binding.rvWriteFormPatientList.hasFixedSize();
-        binding.rvWriteFormPatientList.setLayoutManager(new LinearLayoutManager(getContext()));
+        super.onCreateView(inflater, container, savedInstanceState);
+        patientListViewModel = ViewModelProviders.of(getActivity()).get(PatientListViewModel.class);
 
+        binding.writeFormAllCardView.setOnClickListener((v) -> {
+            Intent intent = new Intent(getContext(), WriteFormActivity.class);
+            intent.putExtra("isAll", true);
+            startActivity(intent);
+        });
+
+        patientListViewModel.getPatientList().observe(this, (res) -> {
+            WriteFormPatientListAdapter adapter = new WriteFormPatientListAdapter(patientListViewModel.getPatientList().getValue());
+            binding.rvWriteFormPatientList.setAdapter(adapter);
+            binding.rvWriteFormPatientList.hasFixedSize();
+            binding.rvWriteFormPatientList.setLayoutManager(new LinearLayoutManager(getContext()));
+            adapter.notifyDataSetChanged();
+        });
         return view;
     }
 

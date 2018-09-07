@@ -32,6 +32,7 @@ public class SignUpSecondFragment extends DataBindingFragment<FragmentSignUpSeco
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+
         viewModel = ViewModelProviders.of(getActivity()).get(SignUpViewModel.class);
         binding.setVm(viewModel);
 

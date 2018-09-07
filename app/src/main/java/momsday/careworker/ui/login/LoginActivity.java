@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.JsonObject;
@@ -47,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
 //                                Toast.makeText(getBaseContext(), res.body().getAccessToken(), Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                Log.d("TOKEN IS ", res.body().getAccessToken());
                                 saveToken(getBaseContext(), res.body().getAccessToken(), true);
                                 saveToken(getBaseContext(), res.body().getRefreshToken(), false);
                                 startActivity(intent);

@@ -37,15 +37,15 @@ public class PatientListFragment extends DataBindingFragment<FragmentPatientList
     @Nullable
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+        patientListViewModel = ViewModelProviders.of(getActivity()).get(PatientListViewModel.class);
 
-        patientListViewModel = ViewModelProviders.of(this.getActivity()).get(PatientListViewModel.class);
-
-        PatientListAdapter adapter = new PatientListAdapter(patientListViewModel.getPatientList().getValue());
-        binding.rvPatientListParent.setAdapter(adapter);
-        binding.rvPatientListParent.setHasFixedSize(true);
-        binding.rvPatientListParent.setLayoutManager(new LinearLayoutManager(getContext()));
 
         patientListViewModel.getPatientList().observe(this, (res) -> {
+            PatientListAdapter adapter = new PatientListAdapter(patientListViewModel.getPatientList().getValue());
+            binding.rvPatientListParent.setAdapter(adapter);
+            binding.rvPatientListParent.setHasFixedSize(true);
+            binding.rvPatientListParent.setLayoutManager(new LinearLayoutManager(getContext()));
             adapter.notifyDataSetChanged();
         });
 

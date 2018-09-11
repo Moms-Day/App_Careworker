@@ -3,6 +3,7 @@ package momsday.careworker.ui.signUp;
 import android.arch.lifecycle.ViewModelProviders;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import momsday.careworker.adapter.SignUpPagerAdapter;
 import momsday.careworker.R;
@@ -51,7 +52,8 @@ public class SignUpActivity extends DataBindingActivity<ActivitySignUpBinding> {
                         binding.buttonSignUpNext.setOnClickListener(v -> {
 
                             viewModel.signUp();
-
+                            Toast.makeText(getBaseContext(),"성공",Toast.LENGTH_SHORT).show();
+                            finish();
 //                            Intent intent = new Intent(SignUpActivity.this, StartActivity.class);
 //                            startActivity(intent);
                         });

@@ -7,6 +7,7 @@ import io.reactivex.Single;
 import momsday.careworker.model.JWTModel;
 import momsday.careworker.model.PatientResponseModel;
 import okhttp3.ResponseBody;
+import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -21,18 +22,26 @@ public interface Api {
     @Headers("Content-Type: application/json")
     Flowable<Response<ResponseBody>> signUp(@Body JsonObject req);
 
+    @POST("refresh")
+    @Headers("Content-Type: application/json")
+    Call<JWTModel> refresh(@Header("Authorization ") String token);
+
+    //    @POST("")
     @POST("auth")
     @Headers("Content-Type: application/json")
     Flowable<Response<JWTModel>> signIn(@Body JsonObject req);
 
     @GET("patients")
-    Flowable<Response<PatientResponseModel>> getPatients(@Header("Authorization") String token);
+    Call<PatientResponseModel> getPatients(@Header("Authorization") String token);
 
     @PATCH("patients")
-    Flowable<Response<PatientResponseModel>> acceptRequest(@Header("Authorization") String token, @Body JsonObject req);
+    Call<Void> acceptRequest(@Header("Authorization") String token, @Body JsonObject req);
 
     @PATCH("patients/{p_id}")
-    Flowable<Response<Void>> patchPatientMemo(@Header("Authorization") String token, @Path("p_id") String patientId, @Body JsonObject req);
+    Call<Void> patchPatientMemo(@Header("Authorization") String token, @Path("p_id") String patientId, @Body JsonObject req);
+
+    @GET("patients/{p_id}")
+    Call<String> getPatientMemo(@Header("Authorization") String token, @Path("p_id") String patientId);
 
     @POST("send/form/meal")
     Flowable<Response<Void>> sendMeal(@Header("Authorization") String token, @Body JsonObject req);

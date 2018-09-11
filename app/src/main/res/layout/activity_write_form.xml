@@ -10,13 +10,13 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary" />
+        android:background="@drawable/all_back_bottom_blackline" />
 
     <TextView
         android:id="@+id/tv_writeForm_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/colorTextGreen"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,8 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="공통" />
 
-    <android.support.v4.view.ViewPager
+    <FrameLayout
+        android:id="@+id/writeForm_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_writeForm_next"
@@ -36,7 +37,10 @@
         android:id="@+id/btn_writeForm_next"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:background="@color/colorWhite"
+        android:textColor="@color/colorTextGreen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="16sp"
+        android:text="다음" />
 
 </android.support.constraint.ConstraintLayout>

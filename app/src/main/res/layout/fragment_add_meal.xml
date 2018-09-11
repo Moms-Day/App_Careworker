@@ -1,132 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.writeForm.AddMealFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/addMeal_sikdan_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="식단표"
-        android:textColor="#2c2c2c"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/addMeal_breakfirst_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:text="아침"
-        android:textColor="@color/colorText"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/addMeal_breakfirst_et"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/addMeal_breakfirst_et"
-        app:layout_constraintTop_toBottomOf="@+id/addMeal_sikdan_tv" />
-
-    <TextView
-        android:id="@+id/addMeal_lunch_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:text="점심"
-        android:textColor="@color/colorText"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/addMeal_launch_et"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/addMeal_launch_et"
-        app:layout_constraintTop_toTopOf="@+id/addMeal_breakfirst_tv" />
-
-    <TextView
-        android:id="@+id/addMeal_dinner_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:text="저녁"
-        android:textColor="@color/colorText"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/addMeal_dinner_et"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/addMeal_dinner_et"
-        app:layout_constraintTop_toTopOf="@+id/addMeal_lunch_tv" />
-
-    <EditText
-        android:id="@+id/addMeal_breakfirst_et"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/all_back_filled_green"
-        android:gravity="top"
-        android:lineSpacingExtra="1.03dp"
-        android:padding="8dp"
-        android:text="아아아\n아아아"
-        app:layout_constraintEnd_toStartOf="@+id/addMeal_launch_et"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addMeal_breakfirst_tv" />
-
-    <EditText
-        android:id="@+id/addMeal_launch_et"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/all_back_filled_green"
-        android:padding="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/addMeal_dinner_et"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/addMeal_breakfirst_et"
-        app:layout_constraintTop_toBottomOf="@+id/addMeal_lunch_tv" />
-
-    <EditText
-        android:id="@+id/addMeal_dinner_et"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/all_back_filled_green"
-        android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/addMeal_launch_et"
-        app:layout_constraintTop_toBottomOf="@+id/addMeal_dinner_tv" />
-
-    <TextView
-        android:id="@+id/addMeal_desert_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:text="추가간식"
-        android:textColor="@color/colorText"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addMeal_breakfirst_et" />
-
-    <EditText
-        android:id="@+id/addMeal_desert_et"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_margin="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/all_back_filled_green"
-        android:gravity="top"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addMeal_desert_tv" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_height="match_parent"
+        tools:context=".ui.writeForm.AddMealFragment">
+
+        <TextView
+            android:id="@+id/addMeal_sikdan_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="식단표"
+            android:textColor="#2c2c2c"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/addMeal_breakfirst_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:text="아침"
+            android:textColor="@color/colorText"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/addMeal_breakfirst_et"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/addMeal_breakfirst_et"
+            app:layout_constraintTop_toBottomOf="@+id/addMeal_sikdan_tv" />
+
+        <TextView
+            android:id="@+id/addMeal_lunch_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:text="점심"
+            android:textColor="@color/colorText"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/addMeal_launch_et"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/addMeal_launch_et"
+            app:layout_constraintTop_toTopOf="@+id/addMeal_breakfirst_tv" />
+
+        <TextView
+            android:id="@+id/addMeal_dinner_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:text="저녁"
+            android:textColor="@color/colorText"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/addMeal_dinner_et"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/addMeal_dinner_et"
+            app:layout_constraintTop_toTopOf="@+id/addMeal_lunch_tv" />
+
+        <EditText
+            android:id="@+id/addMeal_breakfirst_et"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/all_back_filled_green"
+            android:gravity="top"
+            android:lineSpacingExtra="1.03dp"
+            android:padding="8dp"
+            android:text="아아아\n아아아"
+            app:layout_constraintEnd_toStartOf="@+id/addMeal_launch_et"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addMeal_breakfirst_tv" />
+
+        <EditText
+            android:id="@+id/addMeal_launch_et"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/all_back_filled_green"
+            android:padding="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/addMeal_dinner_et"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/addMeal_breakfirst_et"
+            app:layout_constraintTop_toBottomOf="@+id/addMeal_lunch_tv" />
+
+        <EditText
+            android:id="@+id/addMeal_dinner_et"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/all_back_filled_green"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/addMeal_launch_et"
+            app:layout_constraintTop_toBottomOf="@+id/addMeal_dinner_tv" />
+
+        <TextView
+            android:id="@+id/addMeal_desert_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:text="추가간식"
+            android:textColor="@color/colorText"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addMeal_breakfirst_et" />
+
+        <EditText
+            android:id="@+id/addMeal_desert_et"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/all_back_filled_green"
+            android:gravity="top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addMeal_desert_tv" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

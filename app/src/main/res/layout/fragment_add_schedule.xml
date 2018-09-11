@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.writeForm.AddScheduleFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/addSchedule_sickdan"
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:text="식단표"
+            android:textColor="@color/colorText"
+            android:textSize="17sp"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/addSchedule_startHour"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/all_back_top_bottom_greenline"
+            android:gravity="center"
+            android:layout_marginTop="32dp"
+            android:inputType="number"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toStartOf="@+id/addSchedule_startCo"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addSchedule_sickdan"
+            tools:text="03" />
+
+        <TextView
+            android:id="@+id/addSchedule_startCo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text=":"
+            android:textColor="@color/colorText"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toBottomOf="@+id/addSchedule_startHour"
+            app:layout_constraintEnd_toStartOf="@+id/addSchedule_startMin"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/addSchedule_startHour"
+            app:layout_constraintTop_toTopOf="@+id/addSchedule_startHour" />
+
+        <EditText
+            android:id="@+id/addSchedule_startMin"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:background="@drawable/all_back_top_bottom_greenline"
+            android:gravity="center"
+            android:inputType="number"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toStartOf="@+id/addSchedule_tidle"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/addSchedule_startCo"
+            app:layout_constraintTop_toTopOf="@+id/addSchedule_startHour"
+            tools:text="03" />
+
+        <TextView
+            android:id="@+id/addSchedule_tidle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="~"
+            android:textColor="@color/colorText"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toBottomOf="@+id/addSchedule_startMin"
+            app:layout_constraintEnd_toStartOf="@+id/addSchedule_endHour"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/addSchedule_startMin"
+            app:layout_constraintTop_toTopOf="@+id/addSchedule_startMin" />
+
+        <EditText
+            android:id="@+id/addSchedule_endHour"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:background="@drawable/all_back_top_bottom_greenline"
+            android:gravity="center"
+            android:inputType="number"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toStartOf="@+id/addSchedule_endCo"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/addSchedule_tidle"
+            app:layout_constraintTop_toTopOf="@+id/addSchedule_startMin"
+            tools:text="03" />
+
+        <TextView
+            android:id="@+id/addSchedule_endCo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="24dp"
+            android:text=":"
+            android:textColor="@color/colorText"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toBottomOf="@+id/addSchedule_endHour"
+            app:layout_constraintEnd_toStartOf="@+id/addSchedule_endMin"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/addSchedule_endHour"
+            app:layout_constraintTop_toTopOf="@+id/addSchedule_endHour" />
+
+        <EditText
+            android:id="@+id/addSchedule_endMin"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/all_back_top_bottom_greenline"
+            android:gravity="center"
+            android:inputType="number"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/addSchedule_endCo"
+            app:layout_constraintTop_toTopOf="@+id/addSchedule_endHour"
+            tools:text="03" />
+
+
+        <TextView
+            android:id="@+id/addSchedule_act"
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="64dp"
+            android:text="활동내용"
+            android:textColor="@color/colorText"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addSchedule_startHour" />
+
+        <EditText
+            android:id="@+id/addSchedule_act_et"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:inputType="textMultiLine"
+            tools:text="무슨색이여야하는데"
+            android:gravity="top"
+            android:padding="8dp"
+            android:textSize="14sp"
+            android:background="@color/colorSemiGreen"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addSchedule_act" />
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

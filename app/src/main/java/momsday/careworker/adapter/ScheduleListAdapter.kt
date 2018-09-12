@@ -11,8 +11,8 @@ import momsday.careworker.model.ScheduleModel
 
 class ScheduleListAdapter(val models: ArrayList<ScheduleModel>) : RecyclerView.Adapter<ScheduleListAdapter.ScheduleListViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleListViewHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_schedule_list, parent, false).let {
-                ScheduleListViewHolder(it)
-            }
+        ScheduleListViewHolder(it)
+    }
 
 
     override fun getItemCount() = models.size
@@ -23,7 +23,7 @@ class ScheduleListAdapter(val models: ArrayList<ScheduleModel>) : RecyclerView.A
         val time = itemView.findViewById<TextView>(R.id.item_schedule_time)
         val info = itemView.findViewById<TextView>(R.id.item_schedule_info)
         fun bind(model: ScheduleModel) {
-            time.text = model.time
+            time.text = "${model.startTime} ~ ${model.endTime}"
             info.text = model.info
         }
 

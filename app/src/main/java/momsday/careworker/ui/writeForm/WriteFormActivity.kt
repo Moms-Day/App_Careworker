@@ -7,6 +7,7 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_write_form.*
 
 import momsday.careworker.R
+import momsday.careworker.model.PatientListModel
 import momsday.careworker.util.gone
 import momsday.careworker.util.visible
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -16,6 +17,7 @@ class WriteFormActivity : AppCompatActivity() {
     val selectFormFragment = SelectFormFragment()
     val scheduleListFragment = ScheduleListFragment()
     val addScheduleFragment = AddScheduleFragment()
+    val addMealFragment = AddMealFragment()
 
     val viewModel by lazy {
         ViewModelProviders.of(this)[WriteFormViewModel::class.java]
@@ -25,12 +27,14 @@ class WriteFormActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_write_form)
         val intent = intent
-//        val patient = intent.getParcelableExtra<PatientListModel>("patient")
+        val patient = intent.getParcelableExtra<PatientListModel>("patient")
+        tv_writeForm_title.text = patient.name
+        viewModel.patient.postValue(patient)
+
         val fm = supportFragmentManager
         val fragmentTransaction = fm.beginTransaction()
 
         fragmentTransaction.replace(R.id.writeForm_container, selectFormFragment).commit()
-        btn_writeForm_next.gone()
 
         viewModel.selectedFragment.observe(this, Observer {
             val ft = fm.beginTransaction()
@@ -38,22 +42,16 @@ class WriteFormActivity : AppCompatActivity() {
                 "Schedule" -> {
                     ft.replace(R.id.writeForm_container, ScheduleListFragment()).addToBackStack(null)
                     ft.commit()
-                    btn_writeForm_next.visible()
                 }
-                "AddSchedule" ->{
-                    ft.replace(R.id.writeForm_container, addScheduleFragment)
+                "AddSchedule" -> {
+                    ft.replace(R.id.writeForm_container, addScheduleFragment).addToBackStack(null)
                     ft.commit()
-                    btn_writeForm_next.visible()
+                }
+                "Meal" -> {
+                    ft.replace(R.id.writeForm_container, addMealFragment).addToBackStack(null)
+                    ft.commit()
                 }
             }
         })
-
-        btn_writeForm_next.onClick {
-            when(viewModel.selectedFragment.value) {
-                "Schedule" ->{
-
-                }
-            }
-        }
     }
 }

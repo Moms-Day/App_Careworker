@@ -44,12 +44,12 @@ public interface Api {
     Call<String> getPatientMemo(@Header("Authorization") String token, @Path("p_id") String patientId);
 
     @POST("send/form/meal")
-    Flowable<Response<Void>> sendMeal(@Header("Authorization") String token, @Body JsonObject req);
+    Call<Void> sendMeal(@Header("Authorization") String token, @Body JsonObject req);
 
     @POST("send/form/photo")
     Flowable<Response<Void>> sendPhoto(@Header("Authorization") String token, @Body JsonObject req);
 
     @POST("send/form/schedule")
-    Flowable<Response<Void>> sendSchedule(@Header("Authorization") String token, @Body JsonObject req);
+    Call<Void> sendSchedule(@Header("Authorization") String token, @Body JsonObject req);
 
 }

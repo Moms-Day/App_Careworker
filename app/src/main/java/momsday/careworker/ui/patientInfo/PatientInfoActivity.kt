@@ -20,7 +20,8 @@ class PatientInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_info)
         val id = intent.getStringExtra("id")
-        tv_patientInfo_name.text = intent.getStringExtra("name")
+        val name = intent.getStringExtra("name")
+        tv_patientInfo_name.text = name
         Connect.getAPI().getPatientMemo(getToken(baseContext, true), id).enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>?, response: Response<String>?) {
 //                toast(response!!.code())

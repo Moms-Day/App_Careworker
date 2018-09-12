@@ -8,12 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 
 import momsday.careworker.R
+import momsday.careworker.databinding.FragmentAddPhotoBinding
+import momsday.careworker.util.DataBindingFragment
 
 
 /**
  * A simple [Fragment] subclass.
  */
-class AddPhotoFragment : Fragment() {
+class AddPhotoFragment : DataBindingFragment<FragmentAddPhotoBinding>() {
+    override fun getLayoutId() = R.layout.fragment_add_photo
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

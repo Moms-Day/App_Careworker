@@ -51,6 +51,10 @@ class WriteFormActivity : AppCompatActivity() {
                     ft.replace(R.id.writeForm_container, addMealFragment).addToBackStack(null)
                     ft.commit()
                 }
+                "Photo" -> {
+                    ft.replace(R.id.writeForm_container, addMealFragment).addToBackStack(null)
+                    ft.commit()
+                }
             }
         })
     }

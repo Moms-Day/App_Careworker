@@ -34,11 +34,9 @@ class AddScheduleFragment : DataBindingFragment<FragmentAddScheduleBinding>() {
             val work = binding.addScheduleActEt.text
             writeFormViewModel.addSchedule(ScheduleModel(startTime = "${startHour}:$startMin", endTime = "$endHour:$endMin", info = work.toString()))
             activity!!.supportFragmentManager.popBackStack()
-            Log.d("와 슈발 졸라잘돼", "그러네~~")
         }
 
         writeFormViewModel.schedule.observe(this, Observer {
-            Log.d("와 슈발 졸라잘돼", "와 여기선 되는데")
         })
         return view
     }

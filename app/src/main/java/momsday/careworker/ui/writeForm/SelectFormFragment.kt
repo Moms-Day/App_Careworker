@@ -39,6 +39,7 @@ class SelectFormFragment : DataBindingFragment<FragmentSelectFormBinding>() {
         binding.selectFormMealImg.onClick {
             viewModel.selectedFragment.value = "Meal"
         }
+        binding.selectFormPhotoImg.onClick { viewModel.selectedFragment.value = "Photo" }
         return view
     }
 

@@ -12,9 +12,12 @@
             android:id="@+id/writeForm_all_cardView"
             android:layout_width="340dp"
             android:layout_height="46dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             app:cardCornerRadius="10dp"
-            app:layout_constraintStart_toStartOf="@+id/guideline_writeForm_left"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_writeForm_right"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <android.support.constraint.ConstraintLayout

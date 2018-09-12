@@ -1,131 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.writeForm.SelectFormFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/selectForm_meal_img"
-        android:layout_width="130dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/all_back_round_green_10dp"
-        android:padding="10dp"
-        android:src="@drawable/ic_meal"
-        app:layout_constraintBottom_toTopOf="@+id/selectForm_meal_tv"
-        app:layout_constraintEnd_toStartOf="@+id/selectForm_schedule_img"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.writeForm.SelectFormFragment">
 
-    <TextView
-        android:id="@+id/selectForm_meal_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="8dp"
-        android:text="식단"
-        android:textColor="@color/colorTextGreen"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/selectForm_health_img"
-        app:layout_constraintEnd_toEndOf="@+id/selectForm_meal_img"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/selectForm_meal_img"
-        app:layout_constraintTop_toBottomOf="@+id/selectForm_meal_img" />
+        <ImageView
+            android:id="@+id/selectForm_meal_img"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/all_back_round_green_10dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_meal"
+            app:layout_constraintBottom_toTopOf="@+id/selectForm_meal_tv"
+            app:layout_constraintEnd_toStartOf="@+id/selectForm_schedule_img"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-    <ImageView
-        android:id="@+id/selectForm_schedule_img"
-        android:layout_width="130dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/all_back_round_green_10dp"
-        android:padding="10dp"
-        android:src="@drawable/ic_schedule"
-        app:layout_constraintBottom_toBottomOf="@+id/selectForm_meal_img"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/selectForm_meal_img"
-        app:layout_constraintTop_toTopOf="@+id/selectForm_meal_img" />
+        <TextView
+            android:id="@+id/selectForm_meal_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="8dp"
+            android:text="식단"
+            android:textColor="@color/colorTextGreen"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/selectForm_health_img"
+            app:layout_constraintEnd_toEndOf="@+id/selectForm_meal_img"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/selectForm_meal_img"
+            app:layout_constraintTop_toBottomOf="@+id/selectForm_meal_img" />
 
-    <TextView
-        android:id="@+id/selectForm_schedule_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="스케쥴"
-        android:textColor="@color/colorTextGreen"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/selectForm_schedule_img"
-        app:layout_constraintStart_toStartOf="@+id/selectForm_schedule_img"
-        app:layout_constraintTop_toBottomOf="@+id/selectForm_schedule_img" />
+        <ImageView
+            android:id="@+id/selectForm_schedule_img"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/all_back_round_green_10dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_schedule"
+            app:layout_constraintBottom_toBottomOf="@+id/selectForm_meal_img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/selectForm_meal_img"
+            app:layout_constraintTop_toTopOf="@+id/selectForm_meal_img" />
 
-    <ImageView
-        android:id="@+id/selectForm_health_img"
-        android:layout_width="130dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/all_back_round_green_10dp"
-        android:padding="10dp"
-        android:src="@drawable/ic_health_status"
-        app:layout_constraintBottom_toTopOf="@+id/selectForm_health_tv"
-        app:layout_constraintEnd_toStartOf="@+id/selectForm_photo_img"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectForm_meal_tv" />
+        <TextView
+            android:id="@+id/selectForm_schedule_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="스케쥴"
+            android:textColor="@color/colorTextGreen"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/selectForm_schedule_img"
+            app:layout_constraintStart_toStartOf="@+id/selectForm_schedule_img"
+            app:layout_constraintTop_toBottomOf="@+id/selectForm_schedule_img" />
 
-    <TextView
-        android:id="@+id/selectForm_health_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="건강상태"
-        android:textColor="@color/colorTextGreen"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/selectForm_health_img"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/selectForm_health_img"
-        app:layout_constraintTop_toBottomOf="@+id/selectForm_health_img" />
+        <ImageView
+            android:id="@+id/selectForm_health_img"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/all_back_round_green_10dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_health_status"
+            app:layout_constraintBottom_toTopOf="@+id/selectForm_health_tv"
+            app:layout_constraintEnd_toStartOf="@+id/selectForm_photo_img"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/selectForm_meal_tv" />
 
-    <ImageView
-        android:id="@+id/selectForm_photo_img"
-        android:layout_width="130dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/all_back_round_green_10dp"
-        android:padding="10dp"
-        android:src="@drawable/ic_today_photo"
-        app:layout_constraintBottom_toBottomOf="@+id/selectForm_health_img"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/selectForm_health_img"
-        app:layout_constraintTop_toTopOf="@+id/selectForm_health_img" />
+        <TextView
+            android:id="@+id/selectForm_health_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="건강상태"
+            android:textColor="@color/colorTextGreen"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/selectForm_health_img"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/selectForm_health_img"
+            app:layout_constraintTop_toBottomOf="@+id/selectForm_health_img" />
 
-    <TextView
-        android:id="@+id/selectForm_photo_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="오늘의 사진"
-        android:textColor="@color/colorTextGreen"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/selectForm_photo_img"
-        app:layout_constraintStart_toStartOf="@+id/selectForm_photo_img"
-        app:layout_constraintTop_toBottomOf="@+id/selectForm_photo_img" />
+        <ImageView
+            android:id="@+id/selectForm_photo_img"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/all_back_round_green_10dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_today_photo"
+            app:layout_constraintBottom_toBottomOf="@+id/selectForm_health_img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/selectForm_health_img"
+            app:layout_constraintTop_toTopOf="@+id/selectForm_health_img" />
 
-    <android.support.constraint.Group
-        android:id="@+id/selectForm_individual_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="selectForm_health_img,selectForm_health_tv,selectForm_photo_tv,selectForm_photo_img" />
+        <TextView
+            android:id="@+id/selectForm_photo_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="오늘의 사진"
+            android:textColor="@color/colorTextGreen"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/selectForm_photo_img"
+            app:layout_constraintStart_toStartOf="@+id/selectForm_photo_img"
+            app:layout_constraintTop_toBottomOf="@+id/selectForm_photo_img" />
 
-</android.support.constraint.ConstraintLayout>
+        <android.support.constraint.Group
+            android:id="@+id/selectForm_individual_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="selectForm_health_img,selectForm_health_tv,selectForm_photo_tv,selectForm_photo_img" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

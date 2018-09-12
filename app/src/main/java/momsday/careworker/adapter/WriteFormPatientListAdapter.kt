@@ -32,9 +32,10 @@ class WriteFormPatientListAdapter(val models: ArrayList<PatientListModel>) : Rec
         fun bind(model: PatientListModel) {
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, WriteFormActivity::class.java)
-                intent.putExtra("name", model.name)
-                intent.putExtra("id", model.id)
-                intent.putExtra("isAll", false)
+                intent.putExtra("patient", model)
+//                intent.putExtra("name", model.name)
+//                intent.putExtra("id", model.id)
+//                intent.putExtra("isAll", false)
                 itemView.context.startActivity(intent)
             }
             name.text = model.name

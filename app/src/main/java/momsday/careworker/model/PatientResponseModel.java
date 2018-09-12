@@ -7,9 +7,10 @@ import java.util.ArrayList;
 public class PatientResponseModel {
 
     @SerializedName("connectionRequests")
-    private ArrayList<ConnectionRequest> connectionRequests = null;
+    private ArrayList<ConnectionRequest> connectionRequests = new ArrayList<>();
+
     @SerializedName("inChargeList")
-    private ArrayList<InChargeList> inChargeList = null;
+    private ArrayList<InChargeList> inChargeList = new ArrayList<>();
 
     public ArrayList<ConnectionRequest> getConnectionRequests() {
         return connectionRequests;
@@ -28,7 +29,7 @@ public class PatientResponseModel {
     }
 
 
-public class ConnectionRequest {
+    public class ConnectionRequest {
 
         @SerializedName("p_age")
         private int age;
@@ -40,68 +41,68 @@ public class ConnectionRequest {
         private String userName;
         @SerializedName("req_id")
         private String reqId;
-        @SerializedName("request_time")
-        private String requestTime;
+//        @SerializedName("request_time")
+//        private double requestTime;
         @SerializedName("requester_id")
         private String requesterId;
 
 
-    public int getAge() {
-        return age;
-    }
+        public int getAge() {
+            return age;
+        }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+        public void setAge(int age) {
+            this.age = age;
+        }
 
-    public boolean isGender() {
-        return gender;
-    }
+        public boolean isGender() {
+            return gender;
+        }
 
-    public void setGender(boolean gender) {
-        this.gender = gender;
-    }
+        public void setGender(boolean gender) {
+            this.gender = gender;
+        }
 
-    public String getParentName() {
-        return parentName;
-    }
+        public String getParentName() {
+            return parentName;
+        }
 
-    public void setParentName(String parentName) {
-        this.parentName = parentName;
-    }
+        public void setParentName(String parentName) {
+            this.parentName = parentName;
+        }
 
-    public String getUserName() {
-        return userName;
-    }
+        public String getUserName() {
+            return userName;
+        }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+        public void setUserName(String userName) {
+            this.userName = userName;
+        }
 
-    public String getReqId() {
-        return reqId;
-    }
+        public String getReqId() {
+            return reqId;
+        }
 
-    public void setReqId(String reqId) {
-        this.reqId = reqId;
-    }
+        public void setReqId(String reqId) {
+            this.reqId = reqId;
+        }
 
-    public String getRequestTime() {
-        return requestTime;
-    }
+//        public double getRequestTime() {
+//            return requestTime;
+//        }
 
-    public void setRequestTime(String requestTime) {
-        this.requestTime = requestTime;
-    }
+//        public void setRequestTime(double requestTime) {
+//            this.requestTime = requestTime;
+//        }
 
-    public String getRequesterId() {
-        return requesterId;
-    }
+        public String getRequesterId() {
+            return requesterId;
+        }
 
-    public void setRequesterId(String requesterId) {
-        this.requesterId = requesterId;
+        public void setRequesterId(String requesterId) {
+            this.requesterId = requesterId;
+        }
     }
-}
 
     public class InChargeList {
 

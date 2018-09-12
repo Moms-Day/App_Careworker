@@ -69,6 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView_patientInfo" />
 
     <EditText
+        android:id="@+id/et_patientInfo_memo"
         style="@style/BaseEditTextStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -77,13 +78,13 @@
         android:gravity="top"
         android:hint="메모를 입력하세요."
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/btn_patientInfo_submit"
         app:layout_constraintEnd_toStartOf="@+id/gLine_patientInfo_right"
         app:layout_constraintStart_toStartOf="@+id/gLine_patientInfo_left"
         app:layout_constraintTop_toBottomOf="@+id/tv_patientInfo_writeMemo" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_patientInfo_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"

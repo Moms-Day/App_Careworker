@@ -1,6 +1,9 @@
 package momsday.careworker.model;
 
-public class PatientListModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class PatientListModel implements Parcelable{
 
     public static final int VIEWTYPE_HEADER = 0;
     public static final int VIEWTYPE_PATIENT = 1;
@@ -36,6 +39,29 @@ public class PatientListModel {
         this.name = name;
         this.viewType = viewType;
     }
+
+    private PatientListModel(Parcel in) {
+        name = in.readString();
+        info = in.readString();
+        protectorName = in.readString();
+        age = in.readString();
+        viewType = in.readInt();
+        id = in.readString();
+        requestTime = in.readString();
+        requestId = in.readString();
+    }
+
+    public static final Creator<PatientListModel> CREATOR = new Creator<PatientListModel>() {
+        @Override
+        public PatientListModel createFromParcel(Parcel in) {
+            return new PatientListModel(in);
+        }
+
+        @Override
+        public PatientListModel[] newArray(int size) {
+            return new PatientListModel[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -99,5 +125,21 @@ public class PatientListModel {
 
     public void setRequestId(String requestId) {
         this.requestId = requestId;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(name);
+        parcel.writeString(info);
+        parcel.writeString(protectorName);
+        parcel.writeString(age);
+        parcel.writeInt(viewType);;
+        parcel.writeString(id);
+        parcel.writeString(requestTime);
     }
 }

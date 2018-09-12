@@ -9,6 +9,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -21,6 +23,9 @@ import momsday.careworker.model.PatientListModel;
 import momsday.careworker.model.PatientResponseModel;
 import momsday.careworker.util.DataBindingActivity;
 import momsday.careworker.viewModel.PatientListViewModel;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static momsday.careworker.util.TokenManagerKt.getToken;
 
@@ -44,12 +49,11 @@ public class MainActivity extends DataBindingActivity<ActivityMainBinding> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        patientListViewModel = ViewModelProviders.of(this).get(PatientListViewModel.class);
         init();
     }
 
     void init() {
-        patientListViewModel = ViewModelProviders.of(this).get(PatientListViewModel.class);
-
         patientListFragment = new PatientListFragment();
         chattingFragment = new ChattingFragment();
         writeFormFragment = new WriteFormFragment();
@@ -70,7 +74,29 @@ public class MainActivity extends DataBindingActivity<ActivityMainBinding> {
 
         Api api = Connect.getAPI();
 
-        addDisposable(api.getPatients(getToken(getBaseContext(), true))
+        api.getPatients(getToken(getBaseContext(), true)).enqueue(new Callback<PatientResponseModel>() {
+            @Override
+            public void onResponse(Call<PatientResponseModel> call, Response<PatientResponseModel> res) {
+                if (!res.body().getConnectionRequests().isEmpty())
+                    patientListViewModel.addList(new PatientListModel("요청목록 ( " + res.body().getConnectionRequests().size() + " )", PatientListModel.VIEWTYPE_HEADER));
+                for (PatientResponseModel.ConnectionRequest model : res.body().getConnectionRequests()) {
+                    patientListViewModel.addList(new PatientListModel(model.getParentName(), String.valueOf(model.getAge()), model.getUserName(), model.getRequesterId(), model.getReqId(), PatientListModel.VIEWTYPE_REQUEST));
+                }
+
+                if (!res.body().getInChargeList().isEmpty())
+                    patientListViewModel.addList(new PatientListModel("환자목록 ( " + res.body().getInChargeList().size() + " )", PatientListModel.VIEWTYPE_HEADER));
+
+                for (PatientResponseModel.InChargeList model : res.body().getInChargeList()) {
+                    patientListViewModel.addList(new PatientListModel(model.getName(), String.valueOf(model.getAge()), model.getDaughter(), model.getId(), PatientListModel.VIEWTYPE_PATIENT));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PatientResponseModel> call, Throwable t) {
+
+            }
+        });
+        /*addDisposable(api.getPatients(getToken(getBaseContext(), true))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(res -> {
@@ -89,8 +115,7 @@ public class MainActivity extends DataBindingActivity<ActivityMainBinding> {
 
                 }, err -> {
                     Toast.makeText(getBaseContext(), "인터넷 오류가 발생했습니다.", Toast.LENGTH_SHORT).show();
-                }));
-
+                }));*/
     }
 
     void addDisposable(Disposable d) {

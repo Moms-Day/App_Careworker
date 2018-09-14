@@ -48,11 +48,11 @@ class AddMealFragment : DataBindingFragment<FragmentAddMealBinding>() {
             }
             Connect.getAPI().sendMeal(getToken(this@AddMealFragment.context!!,true),req ).enqueue( object: Callback<Void>{
                 override fun onResponse(call: Call<Void>?, response: Response<Void>) {
-                    Toast.makeText(this@AddMealFragment.context ,"${response.code()}",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@AddMealFragment.context ,"성공했습니다",Toast.LENGTH_SHORT).show()
+                    activity!!.supportFragmentManager.popBackStack()
                 }
 
                 override fun onFailure(call: Call<Void>?, t: Throwable?) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                 }
 
             })

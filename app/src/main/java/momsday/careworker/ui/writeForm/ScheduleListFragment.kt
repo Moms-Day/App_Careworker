@@ -71,6 +71,7 @@ class ScheduleListFragment : DataBindingFragment<FragmentScheduleListBinding>() 
             Connect.getAPI().sendSchedule(getToken(this@ScheduleListFragment.context!!, true), req).enqueue(object : Callback<Void>{
                 override fun onResponse(call: Call<Void>?, response: Response<Void>) {
                     Log.d("ScheduleListFragment", "code: ${response.code()}")
+                    activity!!.supportFragmentManager.popBackStack()
                 }
 
                 override fun onFailure(call: Call<Void>?, t: Throwable?) {

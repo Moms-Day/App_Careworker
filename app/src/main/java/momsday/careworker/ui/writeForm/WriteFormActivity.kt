@@ -18,6 +18,7 @@ class WriteFormActivity : AppCompatActivity() {
     val scheduleListFragment = ScheduleListFragment()
     val addScheduleFragment = AddScheduleFragment()
     val addMealFragment = AddMealFragment()
+    val addPhotoFragment = AddPhotoFragment()
 
     val viewModel by lazy {
         ViewModelProviders.of(this)[WriteFormViewModel::class.java]
@@ -52,7 +53,7 @@ class WriteFormActivity : AppCompatActivity() {
                     ft.commit()
                 }
                 "Photo" -> {
-                    ft.replace(R.id.writeForm_container, addMealFragment).addToBackStack(null)
+                    ft.replace(R.id.writeForm_container, addPhotoFragment).addToBackStack(null)
                     ft.commit()
                 }
             }

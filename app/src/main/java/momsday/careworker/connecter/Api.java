@@ -47,7 +47,7 @@ public interface Api {
     Call<Void> sendMeal(@Header("Authorization") String token, @Body JsonObject req);
 
     @POST("send/form/photo")
-    Flowable<Response<Void>> sendPhoto(@Header("Authorization") String token, @Body JsonObject req);
+    Call<Void> sendPhoto(@Header("Authorization") String token, @Body JsonObject req);
 
     @POST("send/form/schedule")
     Call<Void> sendSchedule(@Header("Authorization") String token, @Body JsonObject req);

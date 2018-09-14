@@ -40,27 +40,6 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-
-        PermissionListener permissionlistener = new PermissionListener() {
-            @Override
-            public void onPermissionGranted() {
-
-            }
-
-            @Override
-            public void onPermissionDenied(List<String> deniedPermissions) {
-
-            }
-        };
-        TedPermission.with(this)
-                .setPermissionListener(permissionlistener)
-                .setRationaleMessage("구글 로그인을 하기 위해서는 주소록 접근 권한이 필요해요")
-                .setDeniedMessage("왜 거부하셨어요...\n하지만 [설정] > [권한] 에서 권한을 허용할 수 있어요.")
-                .setPermissions(Manifest.permission.READ_EXTERNAL_STORAGE)
-                .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                .setPermissions(Manifest.permission.CAMERA)
-                .check();
-
         if (!getToken(getBaseContext(), true).isEmpty()) {
 //            Connect.getAPI().
             Api api = Connect.getAPI();

@@ -48,7 +48,7 @@ public class ChattingFragment extends Fragment {
         mainChatListLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         ArrayList<MainRecyclerChatListItem> mainRecyclerChatListItems = new ArrayList();
 
-        mainRecyclerChatListItems.add(new MainRecyclerChatListItem("이종현", "종현이왼팔"));
+        mainRecyclerChatListItems.add(new MainRecyclerChatListItem("qw", "Chatting"));
         mainChatListRecycler.setLayoutManager(mainChatListLayoutManager);
         mainChatListRecycler.setItemAnimator(new DefaultItemAnimator());
 

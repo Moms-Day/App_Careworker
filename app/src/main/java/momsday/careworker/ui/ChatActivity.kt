@@ -33,8 +33,6 @@ class ChatActivity : AppCompatActivity() {
         val database = FirebaseDatabase.getInstance()
         val reference = database.reference
         val chatItem = ArrayList<MainRecyclerChatItem>()
-        chatItem.add(MainRecyclerChatItem(0, dateText))
-        chatItem.add(MainRecyclerChatItem(1, dateText))
         val adapter = ChatRecyclerViewAdapter(chatItem)
 
         recycler_main_chat.adapter = adapter
@@ -43,24 +41,24 @@ class ChatActivity : AppCompatActivity() {
 
 
         text_chat_send_message.onClick {
-            val chatData = MainRecyclerChatItem(1, timeText, edit_chat_message.text.toString())
-            reference.child("message").push().setValue(chatData)
+            val chatData = MainRecyclerChatItem(2, timeText, edit_chat_message.text.toString())
+            reference.child("asdfANDqw").child("message").push().setValue(chatData)
             edit_chat_message.text.clear()
         }
 
-        reference.child("message").addChildEventListener(object : ChildEventListener {
+        reference.child("asdfANDqw").child("message").addChildEventListener(object : ChildEventListener {
             override fun onChildMoved(p0: DataSnapshot, p1: String?) {
             }
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 val chatData = p0.getValue(MainRecyclerChatItem::class.java)  // chatData를 가져오고
                 if (chatData!!.getItemViewType() === 2) {
-                    chatItem.add(MainRecyclerChatItem(2, chatData!!.getMessageText(), chatData.getTimeText()))
+                    chatItem.add(MainRecyclerChatItem(2, chatData!!.timeText, chatData.messageText))
                     adapter.notifyDataSetChanged()
                     recycler_main_chat.smoothScrollToPosition(chatItem.size - 1)
                 }
                 if (chatData!!.getItemViewType() === 1) {
-                    chatItem.add(MainRecyclerChatItem(1, chatData!!.getMessageText(), chatData.getTimeText()))
+                    chatItem.add(MainRecyclerChatItem(1, chatData!!.messageText, chatData.timeText))
                     adapter.notifyDataSetChanged()
                     recycler_main_chat.smoothScrollToPosition(chatItem.size - 1)
                 }

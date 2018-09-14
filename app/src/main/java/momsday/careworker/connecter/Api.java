@@ -52,4 +52,7 @@ public interface Api {
     @POST("send/form/schedule")
     Call<Void> sendSchedule(@Header("Authorization") String token, @Body JsonObject req);
 
+    @POST("send/form/condition")
+    Call<Void> sendCondition(@Header("Authorization") String token, @Body JsonObject req);
+
 }

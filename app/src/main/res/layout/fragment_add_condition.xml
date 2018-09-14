@@ -1,93 +1,283 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.writeForm.AddConditionFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/addCondition_condition_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="건강상태"
-        android:textColor="@color/colorText"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/addCondition_begin_GuideLine"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.writeForm.AddConditionFragment">
 
-    <TextView
-        android:id="@+id/addCondition_temperature_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="체온"
-        android:textColor="@color/colorText"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/addCondition_begin_GuideLine"
-        app:layout_constraintTop_toBottomOf="@+id/addCondition_condition_tv" />
-
-    <RadioGroup
-        android:id="@+id/addCondition_temperature_rg"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        android:background="@drawable/all_back_filled_green"
-        app:layout_constraintEnd_toStartOf="@+id/addCondition_end_GuideLine"
-        app:layout_constraintStart_toStartOf="@+id/addCondition_begin_GuideLine"
-        app:layout_constraintTop_toBottomOf="@+id/addCondition_temperature_tv">
-
-        <RadioButton
-            android:checked="true"
-            android:id="@+id/addCondition_tem_low_rb"
-            android:layout_width="50dp"
+        <TextView
+            android:id="@+id/addCondition_condition_tv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center|center_vertical"
-            android:button="@null"
-            android:drawableTop="@drawable/selector_condition"
-            android:gravity="bottom|center_horizontal"
-            android:layout_weight="1"
-            android:text="낮음" />
-        <RadioButton
-            android:id="@+id/addCondition_tem_middle_rb"
-            android:layout_width="50dp"
+            android:layout_marginTop="8dp"
+            android:text="건강상태"
+            android:textColor="@color/colorText"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/addCondition_begin_GuideLine"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/addCondition_temperature_rg"
+            android:layout_width="0dp"
+            android:layout_height="360dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/all_back_filled_green"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/addCondition_end_GuideLine"
+            app:layout_constraintStart_toStartOf="@+id/addCondition_begin_GuideLine"
+            app:layout_constraintTop_toBottomOf="@+id/addCondition_condition_tv">
+
+            <CheckBox
+                android:id="@+id/addCondition_activityReduce"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/selector_condition"
+                android:gravity="bottom|center_horizontal"
+                android:text="활동량 감소"
+                app:layout_constraintBottom_toTopOf="@+id/addCondition_bloodHigh"
+                app:layout_constraintEnd_toStartOf="@+id/addCondition_lowTemp"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckBox
+                android:id="@+id/addCondition_lowTemp"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/selector_condition"
+                android:gravity="bottom|center_horizontal"
+                android:text="저체온"
+                app:layout_constraintEnd_toStartOf="@+id/addCondition_highFever"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/addCondition_activityReduce"
+                app:layout_constraintTop_toTopOf="@+id/addCondition_activityReduce" />
+
+            <CheckBox
+                android:id="@+id/addCondition_highFever"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/selector_condition"
+                android:gravity="bottom|center_horizontal"
+                android:text="고열"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/addCondition_lowTemp"
+                app:layout_constraintTop_toTopOf="@+id/addCondition_activityReduce" />
+
+            <CheckBox
+                android:id="@+id/addCondition_bloodHigh"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/selector_condition"
+                android:gravity="bottom|center_horizontal"
+                android:text="고혈압"
+                app:layout_constraintBottom_toTopOf="@+id/addCondition_lowEat"
+                app:layout_constraintEnd_toStartOf="@+id/addCondition_constipation"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addCondition_activityReduce" />
+
+            <CheckBox
+                android:id="@+id/addCondition_bloodLow"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/selector_condition"
+                android:gravity="bottom|center_horizontal"
+                android:text="저혈압"
+                app:layout_constraintEnd_toStartOf="@+id/addCondition_urinationInconvenient"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/addCondition_powerReduction"
+                app:layout_constraintTop_toTopOf="@+id/addCondition_powerReduction" />
+
+            <CheckBox
+                android:id="@+id/addCondition_constipation"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/selector_condition"
+                android:gravity="bottom|center_horizontal"
+                android:text="변비"
+                app:layout_constraintEnd_toStartOf="@+id/addCondition_lowSleep"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/addCondition_bloodHigh"
+                app:layout_constraintTop_toTopOf="@+id/addCondition_bloodHigh" />
+
+            <CheckBox
+                android:id="@+id/addCondition_lowSleep"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/selector_condition"
+                android:gravity="bottom|center_horizontal"
+                android:text="수면부족"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/addCondition_constipation"
+                app:layout_constraintTop_toTopOf="@+id/addCondition_constipation" />
+
+            <CheckBox
+                android:id="@+id/addCondition_lowEat"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/selector_condition"
+                android:gravity="bottom|center_horizontal"
+                android:text="식욕 감퇴"
+                app:layout_constraintBottom_toTopOf="@+id/addCondition_highEat"
+                app:layout_constraintEnd_toStartOf="@+id/addCondition_diarrhea"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addCondition_bloodHigh" />
+
+            <CheckBox
+                android:id="@+id/addCondition_highEat"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/selector_condition"
+                android:gravity="bottom|center_horizontal"
+                android:text="폭식"
+                app:layout_constraintBottom_toTopOf="@+id/addCondition_powerReduction"
+                app:layout_constraintEnd_toStartOf="@+id/addCondition_cough"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addCondition_lowEat" />
+
+            <CheckBox
+                android:id="@+id/addCondition_diarrhea"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/selector_condition"
+                android:gravity="bottom|center_horizontal"
+                android:text="설사"
+                app:layout_constraintEnd_toStartOf="@+id/addCondition_vomiting"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/addCondition_lowEat"
+                app:layout_constraintTop_toTopOf="@+id/addCondition_lowEat" />
+
+            <CheckBox
+                android:id="@+id/addCondition_vomiting"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/selector_condition"
+                android:gravity="bottom|center_horizontal"
+                android:text="구토"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/addCondition_diarrhea"
+                app:layout_constraintTop_toTopOf="@+id/addCondition_diarrhea" />
+
+            <CheckBox
+                android:id="@+id/addCondition_urinationInconvenient"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/selector_condition"
+                android:gravity="bottom|center_horizontal"
+                android:text="배뇨활동 불편"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/addCondition_bloodLow"
+                app:layout_constraintTop_toTopOf="@+id/addCondition_bloodLow" />
+
+            <CheckBox
+                android:id="@+id/addCondition_powerReduction"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/selector_condition"
+                android:gravity="bottom|center_horizontal"
+                android:text="인지력 감퇴"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/addCondition_bloodLow"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addCondition_highEat" />
+
+            <CheckBox
+                android:id="@+id/addCondition_povertyOfBlood"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/selector_condition"
+                android:gravity="bottom|center_horizontal"
+                android:text="빈혈"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/addCondition_cough"
+                app:layout_constraintTop_toTopOf="@+id/addCondition_cough" />
+
+            <CheckBox
+                android:id="@+id/addCondition_cough"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:checked="false"
+                android:drawableTop="@drawable/selector_condition"
+                android:gravity="bottom|center_horizontal"
+                android:text="기침"
+                app:layout_constraintEnd_toStartOf="@+id/addCondition_povertyOfBlood"
+                app:layout_constraintStart_toEndOf="@+id/addCondition_highEat"
+                app:layout_constraintTop_toTopOf="@+id/addCondition_highEat" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <Button
+            android:id="@+id/addCondition_submit"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center|center_vertical"
-            android:button="@null"
-            android:drawableTop="@drawable/selector_condition"
-            android:gravity="bottom|center_horizontal"
-            android:layout_weight="1"
-            android:text="중간" />
-        <RadioButton
-            android:id="@+id/addCondition_tem_high_rb"
-            android:layout_width="50dp"
+            android:background="@drawable/all_back_top_greenline"
+            android:text="확인"
+            android:textColor="@color/colorTextGreen"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/addCondition_begin_GuideLine"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center|center_vertical"
-            android:button="@null"
-            android:drawableTop="@drawable/selector_condition"
-            android:gravity="bottom|center_horizontal"
-            android:layout_weight="1"
-            android:text="높음" />
-    </RadioGroup>
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="8dp" />
 
-    <android.support.constraint.Guideline
-        android:id="@+id/addCondition_begin_GuideLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="8dp" />
+        <android.support.constraint.Guideline
+            android:id="@+id/addCondition_end_GuideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="8dp" />
 
-    <android.support.constraint.Guideline
-        android:id="@+id/addCondition_end_GuideLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="8dp" />
-
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

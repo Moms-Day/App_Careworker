@@ -44,7 +44,7 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
         if (viewType == VIEW_TYPE_DATE) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main_recycler_chat_date, parent, false);
             return new MainChatRecyclerDateViewHolder(v);
-        } else if (viewType == VIEW_TYPE_ME) {
+        } else if (viewType == VIEW_TYPE_YOU) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main_recycler_chat_me, parent, false);
             return new MainChatRecyclerMeViewHolder(v);
         } else {

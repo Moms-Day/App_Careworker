@@ -10,8 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import momsday.careworker.R;
-import momsday.careworker.model.ChatListItem;
-import momsday.careworker.model.ChatRecyclerItem;
+import momsday.careworker.model.MainRecyclerChatItem;
 
 public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -19,7 +18,7 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
     public static final int VIEW_TYPE_ME = 1;
     public static final int VIEW_TYPE_YOU = 2;
 
-    private ArrayList<ChatRecyclerItem> mainRecyclerChatItems;
+    private ArrayList<MainRecyclerChatItem> mainRecyclerChatItems;
 
     public ChatRecyclerViewAdapter(ArrayList itemList) {
         mainRecyclerChatItems = itemList;
@@ -57,7 +56,7 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ChatRecyclerItem mainRecyclerChatItem = mainRecyclerChatItems.get(position);
+        MainRecyclerChatItem mainRecyclerChatItem = mainRecyclerChatItems.get(position);
         if (holder instanceof MainChatRecyclerDateViewHolder) {
             ((MainChatRecyclerDateViewHolder) holder).chatDateText.setText(mainRecyclerChatItems.get(position).dateText);
 

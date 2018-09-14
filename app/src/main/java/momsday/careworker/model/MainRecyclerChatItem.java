@@ -1,6 +1,6 @@
 package momsday.careworker.model;
 
-public class ChatRecyclerItem {
+public class MainRecyclerChatItem {
     public String  messageText;
     public String timeText;
     public String dateText;
@@ -21,14 +21,16 @@ public class ChatRecyclerItem {
     public int getItemViewType() {
         return itemViewType;
     }
+  public   MainRecyclerChatItem() { }
 
-    public ChatRecyclerItem(int itemViewType, String messageText, String timeText) {
+
+    public MainRecyclerChatItem(int itemViewType, String messageText, String timeText) {
         this.itemViewType = itemViewType;
         this.messageText = messageText;
         this.timeText = timeText;
     }
 
-    public ChatRecyclerItem(int itemViewType, String dateText) {
+    public MainRecyclerChatItem(int itemViewType, String dateText) {
         this.itemViewType = itemViewType;
         this.dateText = dateText;
     }

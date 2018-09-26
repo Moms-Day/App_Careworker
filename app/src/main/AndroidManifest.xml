@@ -31,7 +31,9 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".ui.writeForm.WriteFormActivity" />
         <activity android:name=".ui.patientInfo.PatientInfoActivity" />
-        <activity android:name=".ui.ChatActivity"></activity>
+        <activity android:name=".ui.ChatActivity" />
+        <activity android:name=".ui.mypage.MyPageActivity" />
+        <activity android:name=".ui.mypage.ChangeInfoActivity"></activity>
     </application>
 
 </manifest>

@@ -3,7 +3,7 @@ package momsday.careworker.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class PatientListModel implements Parcelable{
+public class PatientListModel implements Parcelable {
 
     public static final int VIEWTYPE_HEADER = 0;
     public static final int VIEWTYPE_PATIENT = 1;
@@ -25,14 +25,14 @@ public class PatientListModel implements Parcelable{
         this.viewType = viewType;
     }
 
-    public PatientListModel(String name, String age, String protectorName, String id, String requestId, int viewType) {
+    public PatientListModel(String name, String age, String protectorName, String requesterId, String id, int viewType) {
         this.name = name;
         this.age = age;
         this.protectorName = protectorName;
         this.viewType = viewType;
         this.id = id;
         this.requestTime = requestTime;
-        this.requestId = requestId;
+        this.requestId = requesterId;
     }
 
     public PatientListModel(String name, int viewType) {
@@ -138,7 +138,8 @@ public class PatientListModel implements Parcelable{
         parcel.writeString(info);
         parcel.writeString(protectorName);
         parcel.writeString(age);
-        parcel.writeInt(viewType);;
+        parcel.writeInt(viewType);
+        ;
         parcel.writeString(id);
         parcel.writeString(requestTime);
     }

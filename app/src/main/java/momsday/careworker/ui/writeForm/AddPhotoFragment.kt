@@ -22,8 +22,13 @@ import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.google.gson.JsonObject
+import kotlinx.android.synthetic.main.fragment_add_photo.*
 import momsday.careworker.connecter.Connect
+import momsday.careworker.model.PhotoModel
+import momsday.careworker.model.ScheduleListModel
+import momsday.careworker.model.ScheduleModel
 import momsday.careworker.util.getToken
 import retrofit2.Call
 import retrofit2.Callback
@@ -41,6 +46,7 @@ class AddPhotoFragment : DataBindingFragment<FragmentAddPhotoBinding>() {
         ViewModelProviders.of(activity!!).get(WriteFormViewModel::class.java)
     }
 
+    var isPosted = false
     lateinit var bitMap: Bitmap
 
     override fun getLayoutId() = R.layout.fragment_add_photo
@@ -49,7 +55,32 @@ class AddPhotoFragment : DataBindingFragment<FragmentAddPhotoBinding>() {
                               savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
 
-        binding.addPhotoAttachImg.onClick {
+        Connect.getAPI().getPhoto(getToken(context!!, true), writeFormViewModel.patient.value!!.id).enqueue(object : Callback<PhotoModel> {
+            override fun onResponse(call: Call<PhotoModel>?, response: Response<PhotoModel>?) {
+                val model = response!!.body()!!
+                Log.d("AddPhotoFragment", "model.comment: ${model.comment}")
+                Log.d("AddPhotoFragment", "model.photo_path: ${model.photo_path}")
+                if (model.comment != null) {
+                    isPosted = true
+
+                    binding.addPhotoDescribeEt.setText(model.comment)
+                }
+                if (model.photo_path != null) {
+                    isPosted = true
+                    Glide.with(this@AddPhotoFragment)
+                            .load("http://${model.photo_path}")
+                            .into(addPhoto_attach_view)
+                }
+                Log.d("AddPhotoFragment", "isPosted: $isPosted")
+            }
+
+            override fun onFailure(call: Call<PhotoModel>?, t: Throwable?) {
+                Log.d("AddPhotoFragment", "FAILED")
+            }
+
+        })
+
+        binding.addPhotoAttachView.onClick {
             val intent = Intent(Intent.ACTION_PICK)
             intent.data = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
             intent.type = "image/*"
@@ -62,27 +93,43 @@ class AddPhotoFragment : DataBindingFragment<FragmentAddPhotoBinding>() {
             val byteArray = byteArrayOutputStream.toByteArray()
             Log.d("ByteArray", byteArray!!.contentToString())
             val encodedImage: String = Base64.encodeToString(byteArray, Base64.DEFAULT)
-            Log.d("EncodedImage", encodedImage)
-            Log.d("EncodedImage", Base64.decode(encodedImage, Base64.DEFAULT).contentToString())
+
             val req = JsonObject().apply {
                 addProperty("encodedImage", encodedImage)
                 addProperty("comment", binding.addPhotoDescribeEt.text.toString())
                 addProperty("pId", writeFormViewModel.patient.value!!.id)
             }
-            Connect.getAPI().sendPhoto(getToken(this@AddPhotoFragment.context!!, true), req).enqueue(object : Callback<Void> {
-                override fun onResponse(call: Call<Void>?, response: Response<Void>) {
-                    when(response.code()){
-                        201 ->{
-                            Toast.makeText(this@AddPhotoFragment.context, "사진이 첨부되었습니다.",Toast.LENGTH_SHORT).show()
-                            activity!!.supportFragmentManager.popBackStack()
+            if (!isPosted) {
+                Connect.getAPI().sendPhoto(getToken(this@AddPhotoFragment.context!!, true), req).enqueue(object : Callback<Void> {
+                    override fun onResponse(call: Call<Void>?, response: Response<Void>) {
+                        when (response.code()) {
+                            201 -> {
+                                Toast.makeText(this@AddPhotoFragment.context, "사진이 첨부되었습니다.", Toast.LENGTH_SHORT).show()
+                                activity!!.supportFragmentManager.popBackStack()
+                            }
                         }
                     }
-                }
 
-                override fun onFailure(call: Call<Void>?, t: Throwable?) {
-                }
+                    override fun onFailure(call: Call<Void>?, t: Throwable?) {
+                    }
 
-            })
+                })
+            } else {
+                Connect.getAPI().updatePhoto(getToken(this@AddPhotoFragment.context!!, true), req).enqueue(object : Callback<Void> {
+                    override fun onResponse(call: Call<Void>?, response: Response<Void>) {
+                        when (response.code()) {
+                            201 -> {
+                                Toast.makeText(this@AddPhotoFragment.context, "사진이 첨부되었습니다.", Toast.LENGTH_SHORT).show()
+                                activity!!.supportFragmentManager.popBackStack()
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<Void>?, t: Throwable?) {
+                    }
+
+                })
+            }
         }
         return view
     }
@@ -106,6 +153,10 @@ class AddPhotoFragment : DataBindingFragment<FragmentAddPhotoBinding>() {
         val exifOrientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
         val exifDegree = exifOrientationToDegrees(exifOrientation)
         bitMap = BitmapFactory.decodeFile(imagePath)
+        Glide.with(this)
+                .load(bitMap)
+                .into(addPhoto_attach_view)
+        addPhoto_attach_img.visibility = View.INVISIBLE
         Log.d("Bitmap is", bitMap.toString())
     }
 
@@ -128,22 +179,5 @@ class AddPhotoFragment : DataBindingFragment<FragmentAddPhotoBinding>() {
 
         return cursor.getString(column_index)
     }
-//
-//    private void sendPicture(Uri imgUri) {
-//
-//        String imagePath = getRealPathFromURI(imgUri); // path 경로
-//        ExifInterface exif = null;
-//        try {
-//            exif = new ExifInterface(imagePath);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        int exifOrientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
-//        int exifDegree = exifOrientationToDegrees(exifOrientation);
-//
-//        Bitmap bitmap = BitmapFactory.decodeFile(imagePath);//경로를 통해 비트맵으로 전환
-//        ivImage.setImageBitmap(rotate(bitmap, exifDegree));//이미지 뷰에 비트맵 넣기
-//
-//    }
 
-}// Required empty public constructor
+}

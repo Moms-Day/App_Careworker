@@ -22,6 +22,7 @@ import momsday.careworker.connecter.Connect;
 import momsday.careworker.databinding.ActivityLoginBinding;
 import momsday.careworker.ui.main.MainActivity;
 
+import static momsday.careworker.util.TokenManagerKt.saveId;
 import static momsday.careworker.util.TokenManagerKt.saveToken;
 
 public class LoginActivity extends AppCompatActivity {
@@ -48,6 +49,8 @@ public class LoginActivity extends AppCompatActivity {
 //                                Toast.makeText(getBaseContext(), res.body().getAccessToken(), Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                saveId(getBaseContext(), binding.loginEtId.getText().toString());
+
                                 Log.d("TOKEN IS ", res.body().getAccessToken());
                                 saveToken(getBaseContext(), res.body().getAccessToken(), true);
                                 saveToken(getBaseContext(), res.body().getRefreshToken(), false);

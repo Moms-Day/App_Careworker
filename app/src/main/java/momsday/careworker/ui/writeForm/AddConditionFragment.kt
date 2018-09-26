@@ -4,6 +4,7 @@ package momsday.careworker.ui.writeForm
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.google.gson.JsonObject
 import momsday.careworker.R
 import momsday.careworker.connecter.Connect
 import momsday.careworker.databinding.FragmentAddConditionBinding
+import momsday.careworker.model.ConditionModel
 import momsday.careworker.util.DataBindingFragment
 import momsday.careworker.util.getToken
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -30,12 +32,41 @@ class AddConditionFragment : DataBindingFragment<FragmentAddConditionBinding>() 
         ViewModelProviders.of(activity!!).get(WriteFormViewModel::class.java)
     }
 
+    var isPosted = false
 
     override fun getLayoutId() = R.layout.fragment_add_condition
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
+
+        Connect.getAPI().getCondition(getToken(context!!, true), writeFormViewModel.patient.value!!.id).enqueue(object : Callback<ConditionModel> {
+            override fun onResponse(call: Call<ConditionModel>?, response: Response<ConditionModel>) {
+                val conditionModel = response.body()!!
+                isPosted = conditionModel.isConnected()
+                Log.d("AddConditionFragment", "isPosted: $isPosted")
+                binding.addConditionActivityReduce.isChecked = conditionModel.activity_reduction
+                binding.addConditionLowTemp.isChecked = conditionModel.low_temperature
+                binding.addConditionHighFever.isChecked = conditionModel.high_fever
+                binding.addConditionBloodHigh.isChecked = conditionModel.blood_pressure_increase
+                binding.addConditionBloodLow.isChecked = conditionModel.blood_pressure_reduction
+                binding.addConditionLowSleep.isChecked = conditionModel.lack_of_sleep
+                binding.addConditionLowEat.isChecked = conditionModel.lose_Appetite
+                binding.addConditionHighEat.isChecked = conditionModel.binge_eating
+                binding.addConditionDiarrhea.isChecked = conditionModel.diarrhea
+                binding.addConditionConstipation.isChecked = conditionModel.constipation
+                binding.addConditionVomiting.isChecked = conditionModel.vomiting
+                binding.addConditionUrinationInconvenient.isChecked = conditionModel.urination_inconvenient
+                binding.addConditionPowerReduction.isChecked = conditionModel.human_power_reduction
+                binding.addConditionPovertyOfBlood.isChecked = conditionModel.poverty_of_blood
+                binding.addConditionCough.isChecked = conditionModel.cough
+            }
+
+            override fun onFailure(call: Call<ConditionModel>?, t: Throwable?) {
+                Toast.makeText(context!!, "FAIL?", Toast.LENGTH_SHORT).show()
+            }
+
+        })
 
         binding.addConditionSubmit.onClick {
             val req = JsonObject().apply {
@@ -56,33 +87,32 @@ class AddConditionFragment : DataBindingFragment<FragmentAddConditionBinding>() 
                 addProperty("poverty_of_blood", binding.addConditionPovertyOfBlood.isChecked)
                 addProperty("cough", binding.addConditionCough.isChecked)
             }
-            /*
-            * low_temperature = BooleanField(default=False) # 저체온
-    high_fever = BooleanField(default=False) # 고열
-    blood_pressure_increase = BooleanField(default=False) # 고혈압
-    blood_pressure_reduction = BooleanField(default=False) # 저혈압
-    lack_of_sleep = BooleanField(default=False) # 수면부족
-    lose_Appetite = BooleanField(default=False) # 식욕 감퇴
-    binge_eating = BooleanField(default=False) # 폭식
-    diarrhea = BooleanField(default=False) # 설사
-    constipation = BooleanField(default=False) # 변비
-    vomiting = BooleanField(default=False) # 구토
-    urination_inconvenient = BooleanField(default=False) # 배뇨활동 불편
-    human_power_reduction = BooleanField(default=False) # 인지력 감퇴
-    poverty_of_blood = BooleanField(default=False) # 빈혈
-    cough = BooleanField(default=False) # 기침
-            * */
-            Connect.getAPI().sendCondition(getToken(this@AddConditionFragment.context!!, true), req).enqueue(object : Callback<Void> {
-                override fun onResponse(call: Call<Void>?, response: Response<Void>) {
-                    Toast.makeText(this@AddConditionFragment.context!!, "전송되었습니다.", Toast.LENGTH_SHORT).show()
-                    activity!!.supportFragmentManager.popBackStack()
-                }
 
-                override fun onFailure(call: Call<Void>?, t: Throwable?) {
+            if (!isPosted) {
+                Connect.getAPI().sendCondition(getToken(this@AddConditionFragment.context!!, true), req).enqueue(object : Callback<Void> {
+                    override fun onResponse(call: Call<Void>?, response: Response<Void>) {
+                        Toast.makeText(this@AddConditionFragment.context!!, "전송되었습니다.", Toast.LENGTH_SHORT).show()
+                        activity!!.supportFragmentManager.popBackStack()
+                    }
 
-                }
+                    override fun onFailure(call: Call<Void>?, t: Throwable?) {
 
-            })
+                    }
+
+                })
+            } else {
+                Connect.getAPI().updateCondition(getToken(this@AddConditionFragment.context!!, true), req).enqueue(object : Callback<Void> {
+                    override fun onResponse(call: Call<Void>?, response: Response<Void>) {
+                        Toast.makeText(this@AddConditionFragment.context!!, "전송되었습니다.", Toast.LENGTH_SHORT).show()
+                        activity!!.supportFragmentManager.popBackStack()
+                    }
+
+                    override fun onFailure(call: Call<Void>?, t: Throwable?) {
+
+                    }
+
+                })
+            }
         }
         return view
     }

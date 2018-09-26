@@ -1,6 +1,7 @@
 package momsday.careworker.ui.main;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,7 @@ import momsday.careworker.connecter.Connect;
 import momsday.careworker.databinding.ActivityMainBinding;
 import momsday.careworker.model.PatientListModel;
 import momsday.careworker.model.PatientResponseModel;
+import momsday.careworker.ui.mypage.MyPageActivity;
 import momsday.careworker.util.DataBindingActivity;
 import momsday.careworker.viewModel.PatientListViewModel;
 import retrofit2.Call;
@@ -50,6 +52,9 @@ public class MainActivity extends DataBindingActivity<ActivityMainBinding> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         patientListViewModel = ViewModelProviders.of(this).get(PatientListViewModel.class);
+        findViewById(R.id.main_myPage_Btn).setOnClickListener(v -> {
+            startActivity(new Intent(this, MyPageActivity.class));
+        });
         init();
     }
 
@@ -87,7 +92,7 @@ public class MainActivity extends DataBindingActivity<ActivityMainBinding> {
                     patientListViewModel.addList(new PatientListModel("환자목록 ( " + res.body().getInChargeList().size() + " )", PatientListModel.VIEWTYPE_HEADER));
 
                 for (PatientResponseModel.InChargeList model : res.body().getInChargeList()) {
-                    patientListViewModel.addList(new PatientListModel(model.getName(), String.valueOf(model.getAge()), model.getDaughter(), model.getId(), PatientListModel.VIEWTYPE_PATIENT));
+                    patientListViewModel.addList(new PatientListModel(model.getName(), String.valueOf(model.getAge()), model.getDaughter(), model.getdId(), model.getId(), PatientListModel.VIEWTYPE_PATIENT));
                 }
             }
 
@@ -96,26 +101,6 @@ public class MainActivity extends DataBindingActivity<ActivityMainBinding> {
 
             }
         });
-        /*addDisposable(api.getPatients(getToken(getBaseContext(), true))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(res -> {
-                    if (!res.body().getConnectionRequests().isEmpty())
-                        patientListViewModel.getPatientList().getValue().add(new PatientListModel("요청목록 ( " + res.body().getConnectionRequests().size() + " )", PatientListModel.VIEWTYPE_HEADER));
-                    for (PatientResponseModel.ConnectionRequest model : res.body().getConnectionRequests()) {
-                        patientListViewModel.getPatientList().getValue().add(new PatientListModel(model.getParentName(), String.valueOf(model.getAge()), model.getRequesterId(), model.getReqId(), PatientListModel.VIEWTYPE_REQUEST));
-                    }
-
-                    if (!res.body().getInChargeList().isEmpty())
-                        patientListViewModel.getPatientList().getValue().add(new PatientListModel("환자목록 ( " + res.body().getInChargeList().size() + " )", PatientListModel.VIEWTYPE_HEADER));
-
-                    for (PatientResponseModel.InChargeList model : res.body().getInChargeList()) {
-                        patientListViewModel.getPatientList().getValue().add(new PatientListModel(model.getName(), String.valueOf(model.getAge()), model.getDaughter(), model.getId(), PatientListModel.VIEWTYPE_PATIENT));
-                    }
-
-                }, err -> {
-                    Toast.makeText(getBaseContext(), "인터넷 오류가 발생했습니다.", Toast.LENGTH_SHORT).show();
-                }));*/
     }
 
     void addDisposable(Disposable d) {

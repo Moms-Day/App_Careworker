@@ -73,7 +73,7 @@
             android:gravity="top"
             android:lineSpacingExtra="1.03dp"
             android:padding="8dp"
-            android:text="아아아\n아아아"
+            android:text=""
             app:layout_constraintEnd_toStartOf="@+id/addMeal_launch_et"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"

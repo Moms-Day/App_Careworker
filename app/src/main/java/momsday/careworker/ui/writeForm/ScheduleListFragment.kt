@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.google.gson.JsonArray
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
@@ -19,6 +20,7 @@ import momsday.careworker.R
 import momsday.careworker.adapter.ScheduleListAdapter
 import momsday.careworker.connecter.Connect
 import momsday.careworker.databinding.FragmentScheduleListBinding
+import momsday.careworker.model.ScheduleListModel
 import momsday.careworker.model.ScheduleModel
 import momsday.careworker.util.DataBindingFragment
 import momsday.careworker.util.getToken
@@ -35,6 +37,8 @@ class ScheduleListFragment : DataBindingFragment<FragmentScheduleListBinding>() 
 
     val writeFormViewModel by lazy { ViewModelProviders.of(activity!!)[WriteFormViewModel::class.java] }
 
+    var isPosted = false
+
     override fun getLayoutId() = R.layout.fragment_schedule_list
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -43,10 +47,25 @@ class ScheduleListFragment : DataBindingFragment<FragmentScheduleListBinding>() 
         val scheduleAdapter = ScheduleListAdapter(writeFormViewModel.schedule.value!!)
 //        val scheduleAdapter = ScheduleListAdapter(ArrayList<ScheduleModel>())
         binding.scheduleRv.adapter = scheduleAdapter
+        binding.scheduleRv.setHasFixedSize(true)
+        binding.scheduleRv.layoutManager = LinearLayoutManager(context)
+
+        Connect.getAPI().getSchedule(getToken(context!!, true), writeFormViewModel.patient.value!!.id).enqueue(object : Callback<ArrayList<ScheduleListModel>> {
+            override fun onResponse(call: Call<ArrayList<ScheduleListModel>>?, response: Response<ArrayList<ScheduleListModel>>) {
+                if (response.body()!!.isNotEmpty()) {
+                    isPosted = true
+                    response.body()!!.forEach {
+                        writeFormViewModel.addSchedule(ScheduleModel(it.time, "", it.work))
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ArrayList<ScheduleListModel>>?, t: Throwable?) {
+                Toast.makeText(context, "FAIL", Toast.LENGTH_SHORT).show()
+            }
+        })
 
         writeFormViewModel.schedule.observe(this, Observer {
-            binding.scheduleRv.setHasFixedSize(true)
-            binding.scheduleRv.layoutManager = LinearLayoutManager(context)
             binding.scheduleRv.adapter.notifyDataSetChanged()
 
             Log.d("와 슈발 졸라잘돼", "와 옵저버당")
@@ -68,19 +87,40 @@ class ScheduleListFragment : DataBindingFragment<FragmentScheduleListBinding>() 
             }
             req.addProperty("pId", writeFormViewModel.patient.value!!.id)
             req.add("schedules", schedules)
-            Connect.getAPI().sendSchedule(getToken(this@ScheduleListFragment.context!!, true), req).enqueue(object : Callback<Void>{
-                override fun onResponse(call: Call<Void>?, response: Response<Void>) {
-                    Log.d("ScheduleListFragment", "code: ${response.code()}")
-                    activity!!.supportFragmentManager.popBackStack()
-                }
+            if (!isPosted)
+                Connect.getAPI().sendSchedule(getToken(this@ScheduleListFragment.context!!, true), req).enqueue(object : Callback<Void> {
+                    override fun onResponse(call: Call<Void>?, response: Response<Void>) {
+                        Log.d("ScheduleListFragment", "code: ${response.code()}")
+                        writeFormViewModel.schedule.value!!.clear()
+                        activity!!.supportFragmentManager.popBackStack()
+                    }
 
-                override fun onFailure(call: Call<Void>?, t: Throwable?) {
-                    Log.d("ScheduleListFragment", "FAIL")
-                }
+                    override fun onFailure(call: Call<Void>?, t: Throwable?) {
+                        Log.d("ScheduleListFragment", "FAIL")
+                    }
 
-            })
+                })
+            else
+                Connect.getAPI().updateSchedule(getToken(this@ScheduleListFragment.context!!, true), req).enqueue(object : Callback<Void> {
+                    override fun onResponse(call: Call<Void>?, response: Response<Void>) {
+                        Log.d("ScheduleListFragment", "code: ${response.code()}")
+                        writeFormViewModel.schedule.value!!.clear()
+                        activity!!.supportFragmentManager.popBackStack()
+                    }
+
+                    override fun onFailure(call: Call<Void>?, t: Throwable?) {
+                        Log.d("ScheduleListFragment", "FAIL")
+                    }
+
+                })
         }
         return view
+    }
+
+    override fun onPause() {
+        super.onPause()
+        writeFormViewModel.schedule.value!!.clear()
+
     }
 
 }

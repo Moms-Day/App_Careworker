@@ -1,5 +1,6 @@
 package momsday.careworker.ui.main;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +20,9 @@ import java.util.ArrayList;
 
 import momsday.careworker.R;
 import momsday.careworker.adapter.MainRecyclerChatListItem;
+import momsday.careworker.model.PatientListModel;
 import momsday.careworker.ui.ChatActivity;
+import momsday.careworker.viewModel.PatientListViewModel;
 
 public class ChattingFragment extends Fragment {
 
@@ -27,6 +30,7 @@ public class ChattingFragment extends Fragment {
     RecyclerView mainChatListRecycler;
     LinearLayoutManager mainChatListLayoutManager;
     MainChatListRecyclerViewAdapter mainChatListRecyclerAdapter;
+    PatientListViewModel patientListViewModel;
 
     public ChattingFragment() {
         // Required empty public constructor
@@ -43,17 +47,29 @@ public class ChattingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_chatting, container, false);
+
+        patientListViewModel = ViewModelProviders.of(getActivity()).get(PatientListViewModel.class);
+
         mainChatListRecycler = view.findViewById(R.id.recycler_main_chat_list);
         mainChatListLayoutManager = new LinearLayoutManager(getContext());
         mainChatListLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        ArrayList<MainRecyclerChatListItem> mainRecyclerChatListItems = new ArrayList();
+        ArrayList<MainRecyclerChatListItem> mainRecyclerChatListItems = new ArrayList<>();
 
-        mainRecyclerChatListItems.add(new MainRecyclerChatListItem("qw", "Chatting"));
+//        mainRecyclerChatListItems.add(new MainRecyclerChatListItem("qw", "Chatting"));
         mainChatListRecycler.setLayoutManager(mainChatListLayoutManager);
         mainChatListRecycler.setItemAnimator(new DefaultItemAnimator());
 
         mainChatListRecyclerAdapter = new MainChatListRecyclerViewAdapter(mainRecyclerChatListItems);
         mainChatListRecycler.setAdapter(mainChatListRecyclerAdapter);
+
+        patientListViewModel.getPatientList().observe(this, patientListModels -> {
+            mainRecyclerChatListItems.clear();
+            for (PatientListModel model : patientListModels) {
+                if (model.getViewType() == PatientListModel.VIEWTYPE_PATIENT)
+                    mainRecyclerChatListItems.add(new MainRecyclerChatListItem(model.getName(), "", model.getRequestId()));
+            }
+            mainChatListRecyclerAdapter.notifyDataSetChanged();
+        });
         return view;
     }
 
@@ -73,13 +89,6 @@ public class ChattingFragment extends Fragment {
 
             mainRecyclerChatListContext = parent.getContext();
             MainChatListRecyclerViewHolder holder = new MainChatListRecyclerViewHolder(v);
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), ChatActivity.class);
-                    v.getContext().startActivity(intent);
-                }
-            });
             return holder;
         }
 
@@ -87,6 +96,14 @@ public class ChattingFragment extends Fragment {
         public void onBindViewHolder(@NonNull MainChatListRecyclerViewHolder holder, int position) {
             holder.chatListNameText.setText(mainRecyclerChatListItems.get(position).nameText);
             holder.chatListMessageText.setText(mainRecyclerChatListItems.get(position).messageText);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), ChatActivity.class);
+                    intent.putExtra("id", mainRecyclerChatListItems.get(position).getId());
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
 
 
@@ -96,10 +113,10 @@ public class ChattingFragment extends Fragment {
         }
 
         class MainChatListRecyclerViewHolder extends RecyclerView.ViewHolder {
-            public TextView chatListNameText, chatListMessageText;
-            public ImageView chatListProfileImage;
+            TextView chatListNameText, chatListMessageText;
+            ImageView chatListProfileImage;
 
-            public MainChatListRecyclerViewHolder(View itemView) {
+            MainChatListRecyclerViewHolder(View itemView) {
                 super(itemView);
 
                 chatListNameText = (TextView) itemView.findViewById(R.id.text_chat_list_name);

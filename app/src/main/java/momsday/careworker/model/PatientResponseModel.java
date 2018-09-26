@@ -41,7 +41,7 @@ public class PatientResponseModel {
         private String userName;
         @SerializedName("req_id")
         private String reqId;
-//        @SerializedName("request_time")
+        //        @SerializedName("request_time")
 //        private double requestTime;
         @SerializedName("requester_id")
         private String requesterId;
@@ -116,6 +116,8 @@ public class PatientResponseModel {
         private String id;
         @SerializedName("name")
         private String name;
+        @SerializedName("d_id")
+        private String dId;
 
         public int getAge() {
             return age;
@@ -157,5 +159,12 @@ public class PatientResponseModel {
             this.name = name;
         }
 
+        public String getdId() {
+            return dId;
+        }
+
+        public void setdId(String dId) {
+            this.dId = dId;
+        }
     }
 }

@@ -56,6 +56,7 @@ public class MainActivity extends DataBindingActivity<ActivityMainBinding> {
             startActivity(new Intent(this, MyPageActivity.class));
         });
         init();
+        observe();
     }
 
     void init() {
@@ -90,7 +91,6 @@ public class MainActivity extends DataBindingActivity<ActivityMainBinding> {
 
                 if (!res.body().getInChargeList().isEmpty())
                     patientListViewModel.addList(new PatientListModel("환자목록 ( " + res.body().getInChargeList().size() + " )", PatientListModel.VIEWTYPE_HEADER));
-
                 for (PatientResponseModel.InChargeList model : res.body().getInChargeList()) {
                     patientListViewModel.addList(new PatientListModel(model.getName(), String.valueOf(model.getAge()), model.getDaughter(), model.getdId(), model.getId(), PatientListModel.VIEWTYPE_PATIENT));
                 }
@@ -100,6 +100,34 @@ public class MainActivity extends DataBindingActivity<ActivityMainBinding> {
             public void onFailure(Call<PatientResponseModel> call, Throwable t) {
 
             }
+        });
+    }
+
+    void observe() {
+        patientListViewModel.getPatientListChangeRequestEvent().observe(this, o -> {
+            Api api = Connect.getAPI();
+            api.getPatients(getToken(getBaseContext(), true)).enqueue(new Callback<PatientResponseModel>() {
+                @Override
+                public void onResponse(Call<PatientResponseModel> call, Response<PatientResponseModel> res) {
+                    patientListViewModel.clearList();
+                    if (!res.body().getConnectionRequests().isEmpty())
+                        patientListViewModel.addList(new PatientListModel("요청목록 ( " + res.body().getConnectionRequests().size() + " )", PatientListModel.VIEWTYPE_HEADER));
+                    for (PatientResponseModel.ConnectionRequest model : res.body().getConnectionRequests()) {
+                        patientListViewModel.addList(new PatientListModel(model.getParentName(), String.valueOf(model.getAge()), model.getUserName(), model.getRequesterId(), model.getReqId(), PatientListModel.VIEWTYPE_REQUEST));
+                    }
+
+                    if (!res.body().getInChargeList().isEmpty())
+                        patientListViewModel.addList(new PatientListModel("환자목록 ( " + res.body().getInChargeList().size() + " )", PatientListModel.VIEWTYPE_HEADER));
+                    for (PatientResponseModel.InChargeList model : res.body().getInChargeList()) {
+                        patientListViewModel.addList(new PatientListModel(model.getName(), String.valueOf(model.getAge()), model.getDaughter(), model.getdId(), model.getId(), PatientListModel.VIEWTYPE_PATIENT));
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<PatientResponseModel> call, Throwable t) {
+
+                }
+            });
         });
     }
 

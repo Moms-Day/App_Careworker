@@ -42,7 +42,7 @@ public class PatientListFragment extends DataBindingFragment<FragmentPatientList
 
 
         patientListViewModel.getPatientList().observe(this, (res) -> {
-            PatientListAdapter adapter = new PatientListAdapter(patientListViewModel.getPatientList().getValue());
+            PatientListAdapter adapter = new PatientListAdapter(patientListViewModel.getPatientList().getValue(), patientListViewModel.getPatientListChangeRequestEvent());
             binding.rvPatientListParent.setAdapter(adapter);
             binding.rvPatientListParent.setHasFixedSize(true);
             binding.rvPatientListParent.setLayoutManager(new LinearLayoutManager(getContext()));

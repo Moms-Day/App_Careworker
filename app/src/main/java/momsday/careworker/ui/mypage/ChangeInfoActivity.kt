@@ -26,7 +26,7 @@ class ChangeInfoActivity : AppCompatActivity() {
                 changeInfo_bio_et.setText(model.bio)
                 changeInfo_name_et.setText(model.name)
                 changeInfo_career_et.setText(model.career.toString())
-                changeInfo_facilityCode_et.setText(model.facility_code)
+                changeInfo_facilityCode_et.setText(model.facilityCode)
             }
 
             override fun onFailure(call: Call<MyPageInfoModel>?, t: Throwable?) {
@@ -39,7 +39,7 @@ class ChangeInfoActivity : AppCompatActivity() {
                 addProperty("name", changeInfo_name_et.text.toString())
                 addProperty("bio", changeInfo_bio_et.text.toString())
                 addProperty("career", changeInfo_career_et.text.toString().toInt())
-                addProperty("facilityCode", changeInfo_facilityCode_et.text.toString())
+                addProperty("facility_code", changeInfo_facilityCode_et.text.toString())
             }
             Connect.getAPI().patchMyPageInfo(getToken(baseContext,true),req).enqueue(object: Callback<Void>{
                 override fun onResponse(call: Call<Void>?, response: Response<Void>?) {

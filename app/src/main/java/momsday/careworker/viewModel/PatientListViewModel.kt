@@ -6,12 +6,18 @@ import java.util.ArrayList
 
 import momsday.careworker.model.PatientListModel
 import momsday.careworker.util.DisposableViewModel
+import momsday.careworker.util.SingleLiveEvent
 
-class PatientListViewModel :DisposableViewModel() {
+class PatientListViewModel : DisposableViewModel() {
     val list = arrayListOf<PatientListModel>()
     val patientList = MutableLiveData<ArrayList<PatientListModel>>()
-    fun addList(patientListModel: PatientListModel){
+    val patientListChangeRequestEvent = SingleLiveEvent<Any>()
+    fun addList(patientListModel: PatientListModel) {
         list.add(patientListModel)
+        patientList.postValue(list)
+    }
+    fun clearList(){
+        list.clear()
         patientList.postValue(list)
     }
 }

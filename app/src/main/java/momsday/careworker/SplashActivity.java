@@ -56,7 +56,7 @@ public class SplashActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<JWTModel> call, Throwable t) {
-                    Toast.makeText(getBaseContext(), "뭔문제임", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getBaseContext(), "뭔문제임", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getBaseContext(), StartActivity.class));
                     finish();
                 }

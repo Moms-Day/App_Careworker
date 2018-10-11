@@ -5,6 +5,8 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import java.util.Random;
+
 import momsday.careworker.adapter.SignUpPagerAdapter;
 import momsday.careworker.R;
 import momsday.careworker.util.DataBindingActivity;
@@ -48,9 +50,10 @@ public class SignUpActivity extends DataBindingActivity<ActivitySignUpBinding> {
                         binding.buttonSignUpNext.setOnClickListener(v -> binding.viewPagerSignUp.setCurrentItem(2));
                         break;
                     case 2:
+
+
                         binding.buttonSignUpNext.setText("회원가입");
                         binding.buttonSignUpNext.setOnClickListener(v -> {
-
                             viewModel.signUp();
                             Toast.makeText(getBaseContext(),"성공",Toast.LENGTH_SHORT).show();
                             finish();

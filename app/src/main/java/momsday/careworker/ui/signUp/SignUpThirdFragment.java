@@ -32,6 +32,7 @@ public class SignUpThirdFragment extends DataBindingFragment<FragmentSignUpThird
         super.onCreateView(inflater, container, savedInstanceState);
         viewModel = ViewModelProviders.of(getActivity()).get(SignUpViewModel.class);
         binding.setVm(viewModel);
+
         binding.btnSignUp3PhoneAuth.setOnClickListener(v -> {
             int certCharLength = 8;
             final char[] characterTable = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
@@ -46,6 +47,7 @@ public class SignUpThirdFragment extends DataBindingFragment<FragmentSignUpThird
             }
             viewModel.getVerify().setValue(buf.toString());
         });
+
         return view;
     }
 }

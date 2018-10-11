@@ -70,6 +70,7 @@ class AddPhotoFragment : DataBindingFragment<FragmentAddPhotoBinding>() {
                     Glide.with(this@AddPhotoFragment)
                             .load("http://${model.photo_path}")
                             .into(addPhoto_attach_view)
+                    addPhoto_attach_img.visibility = View.INVISIBLE
                 }
                 Log.d("AddPhotoFragment", "isPosted: $isPosted")
             }
@@ -150,7 +151,7 @@ class AddPhotoFragment : DataBindingFragment<FragmentAddPhotoBinding>() {
         val imagePath = getRealPathFromURI(imgUri)
         val exif: ExifInterface = ExifInterface(imagePath)
 
-        val exifOrientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
+        val exifOrientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_ROTATE_90)
         val exifDegree = exifOrientationToDegrees(exifOrientation)
         bitMap = BitmapFactory.decodeFile(imagePath)
         Glide.with(this)

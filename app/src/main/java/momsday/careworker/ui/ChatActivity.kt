@@ -24,7 +24,8 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
         val id = intent.getStringExtra("id")
-        text_chat_toolbar_name.text = id
+        text_chat_toolbar_name.text = "정경서"
+        var i = 0
         val nowDate = Date(System.currentTimeMillis())
         val timeDateFormat = SimpleDateFormat("hh:mm");
         val dateDateFormat = SimpleDateFormat("yyyy년 MM월 dd일");
@@ -44,7 +45,7 @@ class ChatActivity : AppCompatActivity() {
 
 
         text_chat_send_message.onClick {
-            val chatData = MainRecyclerChatItem(2, edit_chat_message.text.toString(), timeText)
+            val chatData = MainRecyclerChatItem(2, edit_chat_message.text.toString(), timeText, nowDate)
             reference.child("${getId(this@ChatActivity.baseContext!!)}AND$id").child("message").push().setValue(chatData)
             edit_chat_message.text.clear()
         }
@@ -56,12 +57,12 @@ class ChatActivity : AppCompatActivity() {
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 val chatData = p0.getValue(MainRecyclerChatItem::class.java)  // chatData를 가져오고
                 if (chatData!!.getItemViewType() === 2) {
-                    chatItem.add(MainRecyclerChatItem(2,  chatData!!.messageText, chatData.timeText))
+                    chatItem.add(MainRecyclerChatItem(2, chatData!!.messageText, chatData.timeText, chatData.date))
                     adapter.notifyDataSetChanged()
                     recycler_main_chat.smoothScrollToPosition(chatItem.size - 1)
                 }
                 if (chatData!!.getItemViewType() === 1) {
-                    chatItem.add(MainRecyclerChatItem(1, chatData!!.messageText, chatData.timeText))
+                    chatItem.add(MainRecyclerChatItem(1, chatData!!.messageText, chatData.timeText, chatData.date))
                     adapter.notifyDataSetChanged()
                     recycler_main_chat.smoothScrollToPosition(chatItem.size - 1)
                 }

@@ -38,12 +38,20 @@ class AddScheduleFragment : DataBindingFragment<FragmentAddScheduleBinding>() {
             val endMin = binding.addScheduleEndMin.text
             val endHour = binding.addScheduleEndHour.text
             val work = binding.addScheduleActEt.text
+
             writeFormViewModel.addSchedule(ScheduleModel(startTime = "${startHour}:$startMin", endTime = "$endHour:$endMin", info = work.toString()))
+
+            binding.addScheduleStartMin.text.clear()
+            binding.addScheduleStartHour.text.clear()
+            binding.addScheduleEndMin.text.clear()
+            binding.addScheduleEndHour.text.clear()
+            binding.addScheduleActEt.text.clear()
+
+            activity!!.supportFragmentManager.beginTransaction().remove(this@AddScheduleFragment).commit()
             activity!!.supportFragmentManager.popBackStack()
         }
 
-        writeFormViewModel.schedule.observe(this, Observer {
-        })
+
         return view
     }
 

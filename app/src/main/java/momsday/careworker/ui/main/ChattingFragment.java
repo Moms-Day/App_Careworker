@@ -101,6 +101,7 @@ public class ChattingFragment extends Fragment {
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), ChatActivity.class);
                     intent.putExtra("id", mainRecyclerChatListItems.get(position).getId());
+
                     v.getContext().startActivity(intent);
                 }
             });

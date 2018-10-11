@@ -1,6 +1,7 @@
 package momsday.careworker.ui.writeForm
 
 import android.arch.lifecycle.MutableLiveData
+import android.util.Log
 import momsday.careworker.model.PatientListModel
 import momsday.careworker.model.ScheduleModel
 import momsday.careworker.util.DisposableViewModel
@@ -16,7 +17,8 @@ class WriteFormViewModel : DisposableViewModel() {
 
     fun addSchedule(model: ScheduleModel) {
         list.add(model)
-        schedule.postValue(list)
+        Log.d("WriteFormViewModel", "$list")
+        schedule.value = list
     }
 
 }

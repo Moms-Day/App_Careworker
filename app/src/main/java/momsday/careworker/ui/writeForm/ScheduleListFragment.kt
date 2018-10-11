@@ -61,7 +61,7 @@ class ScheduleListFragment : DataBindingFragment<FragmentScheduleListBinding>() 
             }
 
             override fun onFailure(call: Call<ArrayList<ScheduleListModel>>?, t: Throwable?) {
-                Toast.makeText(context, "FAIL", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(context, "FAIL", Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -96,7 +96,7 @@ class ScheduleListFragment : DataBindingFragment<FragmentScheduleListBinding>() 
                     }
 
                     override fun onFailure(call: Call<Void>?, t: Throwable?) {
-                        Log.d("ScheduleListFragment", "FAIL")
+//                        Log.d("ScheduleListFragment", "FAIL")
                     }
 
                 })
@@ -109,18 +109,11 @@ class ScheduleListFragment : DataBindingFragment<FragmentScheduleListBinding>() 
                     }
 
                     override fun onFailure(call: Call<Void>?, t: Throwable?) {
-                        Log.d("ScheduleListFragment", "FAIL")
+//                        Log.d("ScheduleListFragment", "FAIL")
                     }
 
                 })
         }
         return view
     }
-
-    override fun onPause() {
-        super.onPause()
-        writeFormViewModel.schedule.value!!.clear()
-
-    }
-
 }

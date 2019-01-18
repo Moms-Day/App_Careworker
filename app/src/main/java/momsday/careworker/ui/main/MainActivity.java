@@ -2,6 +2,7 @@ package momsday.careworker.ui.main;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.ArrayList;
 
@@ -57,6 +61,11 @@ public class MainActivity extends DataBindingActivity<ActivityMainBinding> {
         });
         init();
         observe();
+
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        SharedPreferences preference = getApplicationContext().getSharedPreferences("pref",MODE_PRIVATE);
+        firebaseDatabase.getReference("users").child(preference.getString("id","")).setValue(FirebaseInstanceId.getInstance().getToken());
+
     }
 
     void init() {
